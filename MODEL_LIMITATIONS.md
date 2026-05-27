@@ -204,6 +204,46 @@ However, these models do not reproduce or validate against any of the above stud
 
 ---
 
+---
+
+## Appendix: CO₂ Index Scaling and the Near-Identical Scenario Problem
+
+### What the problem was
+
+In the initial version of `scenario_examples.py`, the CO₂ delta function contained the expression:
+
+```python
+return max(0.0, emission - fixation_removal * 0.85 + degradation_input) * 0.012
+```
+
+The `max(0.0, ...)` floor meant that any scenario in which restored fixation capacity exceeded emissions would produce **zero delta** rather than **negative delta (CO₂ drawdown)**. This is physically incorrect: a sufficiently healthy carbon cycle should be able to draw CO₂ down, not merely stop accumulating it.
+
+Additionally, the `co2` variable was clipped to `[0.0, 1.0]`. In scenarios with high accumulated CO₂, both "Decarbonization Only" and "Integrated Approach" could be pressed against the ceiling, making them visually indistinguishable.
+
+### What was changed (v2)
+
+1. **Floor removed.** `_co2_delta` now returns `(emission - fixation_removal * 0.85 + degradation_input) * 0.012` without a lower bound, allowing genuine drawdown when restored fixation capacity is strong enough.
+
+2. **Unbounded `co2_pressure` variable added.** `run_scenario` now tracks both:
+   - `co2` — clipped to `[0, 1]`, kept for backward compatibility.
+   - `co2_pressure` — unbounded float accumulator, used in all comparison plots and summary tables.
+
+3. **New `sensitivity_analysis.py`** sweeps five key parameters to show how the gap between "Decarbonization Only" and "Integrated Approach" changes as parameter assumptions change.
+
+### What calibration would be required to resolve this structurally
+
+The near-identical scenario result was a symptom of two deeper problems:
+
+| Problem | Required fix |
+|---|---|
+| Scaling mismatch: the 0.012 multiplier and the 0.85 fixation efficiency factor were chosen arbitrarily | Calibrate against observed net primary production, ocean uptake flux, and atmospheric CO₂ growth rates (e.g., from Global Carbon Project) |
+| Fixation and degradation weights (0.10–0.35) are not grounded in observational data | Derive from FLUXNET biome carbon flux data, ISRIC soil carbon maps, and SeaWiFS/MODIS ocean productivity records |
+| `warming_feedback_strength` (0.08) is hypothetical | Estimate from observed correlations between CO₂ anomalies and land/ocean sink efficiency (e.g., Le Quéré et al., Global Carbon Budget annual updates) |
+
+Until these calibration steps are completed, **no quantitative comparison between scenarios should be treated as a prediction or used as a basis for policy decisions**. The scenario outputs are illustrative of structural logic only.
+
+---
+
 ## Author
 
 Master

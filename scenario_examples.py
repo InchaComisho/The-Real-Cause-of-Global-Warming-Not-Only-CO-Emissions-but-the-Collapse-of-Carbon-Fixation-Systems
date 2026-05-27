@@ -28,6 +28,14 @@ this module projects 75 years forward under four intervention scenarios:
 Purpose: To illustrate that the multi-cause hypothesis implies different
 policy priorities than the single-cause (emissions-only) model.
 
+Change log (v2):
+  - Removed max(0.0, ...) floor from _co2_delta so that strong fixation
+    recovery can produce net CO2 drawdown (negative delta), which is the
+    physically correct behaviour when restored fixation exceeds emissions.
+  - Added co2_pressure (unbounded float) alongside co2 (clipped [0,1]).
+    co2_pressure is used in comparison plots and the summary table so
+    that scenario differences are not masked by the hard [0,1] ceiling.
+
 ⚠️  IMPORTANT LIMITATIONS
     All parameters, rates, and trajectories are HYPOTHETICAL.
     These scenarios are conceptual illustrations, not climate projections.
@@ -145,7 +153,12 @@ class ScenarioEngine:
     ) -> float:
         """
         HYPOTHETICAL CO₂ balance.
-        Positive delta = net accumulation.
+        Positive delta = net accumulation; negative delta = net drawdown.
+
+        Note (v2): the max(0.0, ...) floor has been removed so that
+        scenarios with strong fixation recovery can produce genuine CO₂
+        drawdown.  The clipped `co2` variable is still clamped in
+        run_scenario; the unbounded `co2_pressure` variable is not.
         """
         fixation_removal = (
             p.terr_co2_weight  * terr  +
@@ -153,7 +166,7 @@ class ScenarioEngine:
             p.ocean_co2_weight * ocean
         )
         degradation_input = p.degrad_co2_weight * max(0.0, (0.90 - terr + 0.92 - soil) * 0.5)
-        return max(0.0, emission - fixation_removal * 0.85 + degradation_input) * 0.012
+        return (emission - fixation_removal * 0.85 + degradation_input) * 0.012
 
     def run_scenario(
         self,
@@ -175,18 +188,20 @@ class ScenarioEngine:
         p  = self.params
         s  = self.start
 
-        years      = np.arange(s.year, s.year + T)
-        emission   = np.zeros(T)
-        terr       = np.zeros(T)
-        soil       = np.zeros(T)
-        ocean      = np.zeros(T)
-        co2        = np.zeros(T)
+        years        = np.arange(s.year, s.year + T)
+        emission     = np.zeros(T)
+        terr         = np.zeros(T)
+        soil         = np.zeros(T)
+        ocean        = np.zeros(T)
+        co2          = np.zeros(T)   # clipped to [0, 1] — kept for backward compat
+        co2_pressure = np.zeros(T)   # unbounded — used for comparison plots
 
-        emission[0] = s.emission_rate
-        terr[0]     = s.terrestrial_fixation
-        soil[0]     = s.soil_microbial_health
-        ocean[0]    = s.ocean_uptake_capacity
-        co2[0]      = s.co2_index
+        emission[0]     = s.emission_rate
+        terr[0]         = s.terrestrial_fixation
+        soil[0]         = s.soil_microbial_health
+        ocean[0]        = s.ocean_uptake_capacity
+        co2[0]          = s.co2_index
+        co2_pressure[0] = s.co2_index
 
         for t in range(1, T):
             # --- Emission trajectory ---
@@ -221,16 +236,18 @@ class ScenarioEngine:
 
             # --- CO₂ accumulation ---
             delta = self._co2_delta(emission[t], terr[t], soil[t], ocean[t], p)
-            co2[t] = max(0.0, min(1.0, co2[t - 1] + delta))
+            co2[t]          = max(0.0, min(1.0, co2[t - 1] + delta))
+            co2_pressure[t] = co2_pressure[t - 1] + delta   # unbounded
 
         return {
-            "name":     name,
-            "years":    years,
-            "emission": emission,
-            "terr":     terr,
-            "soil":     soil,
-            "ocean":    ocean,
-            "co2":      co2,
+            "name":         name,
+            "years":        years,
+            "emission":     emission,
+            "terr":         terr,
+            "soil":         soil,
+            "ocean":        ocean,
+            "co2":          co2,
+            "co2_pressure": co2_pressure,
         }
 
     def run_all(self) -> List[Dict]:
@@ -274,6 +291,9 @@ SCENARIO_STYLES = {
 
 
 def plot_scenario_comparison(scenarios: List[Dict]) -> None:
+    import os
+    os.makedirs("figures", exist_ok=True)
+
     fig, axes = plt.subplots(2, 2, figsize=(13, 9))
     fig.suptitle(
         "Scenario Comparison: Four Climate Intervention Strategies (2025–2100)\n"
@@ -281,11 +301,12 @@ def plot_scenario_comparison(scenarios: List[Dict]) -> None:
         fontsize=10, fontweight="bold", color="#8B0000",
     )
 
+    # CO2 panel uses unbounded co2_pressure so clipping does not hide differences
     panels = [
-        ("co2",      "CO₂ Accumulation Index",      axes[0, 0]),
-        ("emission", "Emission Rate",                axes[0, 1]),
-        ("terr",     "Terrestrial Fixation Capacity",axes[1, 0]),
-        ("ocean",    "Ocean CO₂ Uptake Capacity",    axes[1, 1]),
+        ("co2_pressure", "CO₂ Pressure (Unbounded Accumulation Index)", axes[0, 0]),
+        ("emission",     "Emission Rate",                               axes[0, 1]),
+        ("terr",         "Terrestrial Fixation Capacity",               axes[1, 0]),
+        ("ocean",        "Ocean CO₂ Uptake Capacity",                   axes[1, 1]),
     ]
 
     for key, title, ax in panels:
@@ -298,23 +319,28 @@ def plot_scenario_comparison(scenarios: List[Dict]) -> None:
                 label=sc["name"],
             )
         ax.set_title(title, fontsize=10)
-        ax.set_ylabel("Normalized [0–1]")
         ax.set_xlabel("Year")
         ax.grid(alpha=0.3)
-        ax.set_ylim(0, 1.05)
         ax.legend(fontsize=8)
-        ax.axhline(0.5, color="#999", linewidth=0.6, linestyle=":")
+
+        if key == "co2_pressure":
+            ax.set_ylabel("Unbounded accumulation index")
+            ax.axhline(0.55, color="#999", linewidth=0.6, linestyle=":")  # 2025 start
+        else:
+            ax.set_ylabel("Normalized [0–1]")
+            ax.set_ylim(0, 1.05)
+            ax.axhline(0.5, color="#999", linewidth=0.6, linestyle=":")
 
     plt.tight_layout()
-    plt.savefig("scenario_comparison_output.png", dpi=150, bbox_inches="tight")
-    print("  → Saved: scenario_comparison_output.png")
+    plt.savefig("figures/scenario_comparison_output.png", dpi=150, bbox_inches="tight")
+    print("  → Saved: figures/scenario_comparison_output.png")
     plt.show()
 
 
 def print_scenario_summary(scenarios: List[Dict]) -> None:
     checkpoints = [2025, 2035, 2050, 2075, 2099]
-    print(f"\n  {'Scenario':<34}  {'Year':>4}  {'CO₂':>6}  {'Emit':>6}  {'Terr':>6}  {'Ocean':>6}")
-    print(f"  {'─'*34}  {'─'*4}  {'─'*6}  {'─'*6}  {'─'*6}  {'─'*6}")
+    print(f"\n  {'Scenario':<34}  {'Year':>4}  {'CO₂-P':>7}  {'Emit':>6}  {'Terr':>6}  {'Ocean':>6}")
+    print(f"  {'─'*34}  {'─'*4}  {'─'*7}  {'─'*6}  {'─'*6}  {'─'*6}")
     for sc in scenarios:
         years = sc["years"]
         for chk in checkpoints:
@@ -323,7 +349,7 @@ def print_scenario_summary(scenarios: List[Dict]) -> None:
                 name_short = sc["name"][:34]
                 print(
                     f"  {name_short:<34}  {chk:>4}  "
-                    f"{sc['co2'][idx]:>6.3f}  "
+                    f"{sc['co2_pressure'][idx]:>7.3f}  "
                     f"{sc['emission'][idx]:>6.3f}  "
                     f"{sc['terr'][idx]:>6.3f}  "
                     f"{sc['ocean'][idx]:>6.3f}"
@@ -356,10 +382,10 @@ def main() -> None:
     sc_int  = scenarios[3]
 
     co2_end_year = -1
-    print(f"    BAU          CO₂ at 2099: {sc_bau['co2'][co2_end_year]:.3f}")
-    print(f"    Decarb only  CO₂ at 2099: {sc_dc['co2'][co2_end_year]:.3f}")
-    print(f"    Fixation     CO₂ at 2099: {sc_fix['co2'][co2_end_year]:.3f}")
-    print(f"    Integrated   CO₂ at 2099: {sc_int['co2'][co2_end_year]:.3f}")
+    print(f"    BAU          CO2-pressure at 2099: {sc_bau['co2_pressure'][co2_end_year]:.3f}")
+    print(f"    Decarb only  CO2-pressure at 2099: {sc_dc['co2_pressure'][co2_end_year]:.3f}")
+    print(f"    Fixation     CO2-pressure at 2099: {sc_fix['co2_pressure'][co2_end_year]:.3f}")
+    print(f"    Integrated   CO2-pressure at 2099: {sc_int['co2_pressure'][co2_end_year]:.3f}")
     print(
         "\n  This model illustrates the hypothesis that:\n"
         "  - Decarbonization alone slows but may not stabilize CO₂ if fixation\n"

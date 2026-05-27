@@ -837,6 +837,32 @@ The model illustrates that Scenario 2 (decarbonization only) may not stabilize C
 
 ---
 
+### `sensitivity_analysis.py` — Parameter Sensitivity Sweep
+
+**Purpose:**
+Performs a one-at-a-time sensitivity analysis on five key parameters, comparing the unbounded CO₂ pressure at 2099 between Scenario 2 (Decarbonization Only) and Scenario 4 (Integrated Approach).
+
+Parameters swept:
+- `emission_reduction_rate` — speed of decarbonization
+- `terrestrial_restoration_rate` — speed of forest and soil recovery
+- `ocean_restoration_rate` — speed of marine ecosystem recovery
+- `degrad_co2_weight` — sensitivity of CO₂ balance to ecosystem degradation release
+- `warming_feedback_strength` — feedback gain from CO₂ into continued fixation decline
+
+**Run:**
+```bash
+python sensitivity_analysis.py
+```
+
+**Output:**
+- 5-panel chart showing CO₂ pressure at 2099 vs. each swept parameter, with the gap between the two scenarios shaded.
+- Saved as `figures/sensitivity_analysis_output.png`.
+
+**Key point:**
+The gap between the two lines shows how much the fixation restoration pathway contributes *relative to* decarbonization alone as each parameter assumption changes. A narrow gap means the two strategies converge under that assumption; a wide gap means restoration makes a meaningful additional difference.
+
+---
+
 ### Output Figures
 
 Running each script saves a figure to the project root directory.
