@@ -721,3 +721,137 @@ https://github.com/InchaComisho/The-Future-of-ASI
 The Future of Search Engines — Information Evaluation in the Age of AGI and ASI  
 https://github.com/InchaComisho/The-Future-of-Search-Engines
 
+---
+
+## Python Conceptual Models
+
+> ⚠️ **These are conceptual proof-of-concept models, not scientific prediction tools.**
+> All parameter values are hypothetical and normalized to [0.0, 1.0].
+> None have been calibrated against real observational data.
+> See [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md) for full disclosure.
+
+This repository includes four Python simulation scripts that translate the causal framework described above into runnable code.
+They are intended for conceptual exploration and hypothesis illustration, not for generating climate projections or policy recommendations.
+
+### Prerequisites
+
+```bash
+pip install -r requirements.txt
+```
+
+Requires Python 3.8+, NumPy ≥ 1.21, Matplotlib ≥ 3.4.
+Output figures are saved to the `figures/` directory.
+
+---
+
+### `causal_carbon_model.py` — Basic CO₂ Balance Model
+
+**Purpose:**
+Compares two models side by side:
+- **Model A (Standard):** CO₂ accumulation driven by emissions only.
+- **Model B (Causal):** CO₂ accumulation driven by emissions, land fixation decline, ocean uptake decline, and ecosystem degradation release together.
+
+**Run:**
+```bash
+python causal_carbon_model.py
+```
+
+**Output:**
+- Two-panel chart: CO₂ index comparison (A vs. B) and component trajectories (land fixation, ocean uptake, degradation release).
+- Saved as `causal_carbon_model_output.png`.
+
+**Key point:**
+Model B produces higher CO₂ accumulation than Model A under identical emission inputs because fixation system decline reduces the planet's ability to process carbon.
+
+---
+
+### `historical_phase_model.py` — Three-Phase Historical Simulation (1760–2025)
+
+**Purpose:**
+Simulates the conceptual decline of carbon fixation systems across three historical phases:
+- **Phase 1 (1760–1945):** Industrial Expansion — gradual deforestation, urbanization, agricultural land expansion.
+- **Phase 2 (1945–1990):** Post-War Agrochemical Acceleration — rapid adoption of synthetic fertilizers, pesticides, monoculture; soil microbial degradation accelerates.
+- **Phase 3 (1990–2025):** Modern Feedback Acceleration — increased wildfires, Amazon forest loss, marine dead zone expansion, warming feedback.
+
+**Run:**
+```bash
+python historical_phase_model.py
+```
+
+**Output:**
+- Three-panel chart: pressure variables by phase, system health trajectories (terrestrial fixation, soil, ocean), CO₂ index vs. emission rate.
+- Phase checkpoint summary table printed to console.
+- Saved as `historical_phase_model_output.png`.
+
+**Key point:**
+The simulation shows that carbon fixation degradation began long before atmospheric CO₂ became a widely recognized issue, and that Phase 2 marks a structural acceleration in soil and microbial system decline.
+
+---
+
+### `feedback_loop_simulation.py` — Positive Feedback Loops
+
+**Purpose:**
+Simulates three self-amplifying feedback loops between warming and carbon fixation collapse, individually and combined:
+- **Loop 1 (Forest):** Warming → drought/heat stress → forest dieback → CO₂ → warming.
+- **Loop 2 (Soil):** Warming → accelerated microbial respiration → soil carbon release → CO₂ → warming.
+- **Loop 3 (Ocean):** Warming → stratification → phytoplankton nutrient limitation → biological pump weakening → CO₂ → warming.
+
+**Run:**
+```bash
+python feedback_loop_simulation.py
+```
+
+**Output:**
+- 2×2 panel chart: each loop individually + combined simulation.
+- Saved as `feedback_loop_simulation_output.png`.
+
+**Key point:**
+When all three loops operate simultaneously, CO₂ accumulation and warming accelerate faster than any single loop alone — illustrating why the combined effect of fixation system degradation may be underestimated in emissions-only models.
+
+---
+
+### `scenario_examples.py` — Four Scenario Comparison (2025–2099)
+
+**Purpose:**
+Projects four intervention strategies forward from the estimated 2025 starting state:
+
+| Scenario | Emissions | Fixation Restoration |
+|---|---|---|
+| 1. Business as Usual | Continuing growth | None |
+| 2. Decarbonization Only | Aggressive reduction | None — passive decline continues |
+| 3. Fixation Restoration Only | Continuing growth | Active forest, soil, ocean restoration |
+| 4. Integrated Approach | Aggressive reduction | Active restoration of all systems |
+
+**Run:**
+```bash
+python scenario_examples.py
+```
+
+**Output:**
+- 2×2 panel chart comparing CO₂ index, emission rate, terrestrial fixation, and ocean uptake across all four scenarios.
+- Summary table printed to console.
+- Saved as `scenario_comparison_output.png`.
+
+**Key point:**
+The model illustrates that Scenario 2 (decarbonization only) may not stabilize CO₂ if fixation systems continue to decline passively. Scenario 4 (integrated) produces the most stable trajectory by addressing both the emission pathway and the fixation collapse pathway simultaneously.
+
+---
+
+### Output Figures
+
+Running each script saves a figure to the project root directory.
+To redirect output to the `figures/` directory, modify the `plt.savefig()` path in each script:
+
+```python
+plt.savefig("figures/causal_carbon_model_output.png", dpi=150, bbox_inches="tight")
+```
+
+---
+
+### Important Caveats
+
+- All parameter values are normalized [0.0, 1.0] and **hypothetical**. They do not represent real-world measurements.
+- These models are **not** comparable to IPCC-class earth system models (CMIP6, etc.).
+- Scenario outputs are **not** climate projections and should not be used for policy decisions.
+- See [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md) for a complete inventory of all hypothetical parameters and structural limitations.
+
