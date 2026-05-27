@@ -17,13 +17,19 @@ this module projects 75 years forward under five intervention scenarios:
       Fixation systems continue to decline passively.
 
   Scenario 2b — Realistic Global Decarbonization Only:
-      Developed-country emission cuts are partially offset by:
+      Developed-country emission cuts are MORE THAN OFFSET by:
         - developing-country industrialization and energy demand growth
         - population-driven demand growth
-      Net global emissions decline only slowly.
-      Carbon sinks remain degraded. Degradation release continues.
-      Legacy warming pressure remains. No active restoration.
-      Result: slower accumulation at best, not CO2 recovery.
+        - ongoing energy infrastructure buildout in emerging economies
+      Net global emissions grow slightly (not decline).
+      Land carbon fixation does not recover.
+      Ocean carbon uptake does not recover.
+      Soil microbial health remains degraded.
+      Degradation release continues.
+      Legacy warming pressure continues.
+      Carbon sink deficit remains unresolved.
+      Result: CO2 accumulation continues. 2099 pressure still above 1.0.
+      This is NOT a recovery pathway — only a marginally slower BAU.
 
   Scenario 3 — Fixation Restoration Only:
       Active restoration of forests, soils, and marine ecosystems.
@@ -52,16 +58,21 @@ Change log (v2):
   - Added co2_pressure (unbounded) alongside co2 (clipped [0,1]).
 
 Change log (v3):
-  - Split "Decarbonization Only" into:
-      2a. Announced Decarbonization Only  (fast, policy-target pace)
-      2b. Realistic Global Decarbonization Only
-          (slow net decline; developed cuts offset by developing growth)
-  - Added ScenarioParameters for realistic decomposition:
-      developed_country_reduction_rate, developing_country_emissions_growth,
-      population_energy_demand_growth, industrialization_pressure,
-      net_global_decarbonization_rate, realistic_emission_floor.
+  - Split "Decarbonization Only" into 2a (announced) and 2b (realistic).
+  - Added realistic decomposition parameters.
   - run_scenario gains `realistic_decarb` flag.
   - "Integrated Approach" renamed to "Integrated Nature-Complementary Approach".
+
+Change log (v4):
+  - Revised Realistic Global Decarbonization Only (2b) to model a world
+    where developing-world growth EXCEEDS developed-world cuts:
+      net_global_decarbonization_rate = -0.002 / yr  (net emission GROWTH)
+    Previously was +0.003 / yr (slow decline), which was still too optimistic.
+  - emission block now uses np.clip(..., floor, 1.0) to correctly cap growth.
+  - Updated component parameters: developing_country_emissions_growth=0.010,
+    population_energy_demand_growth=0.004, industrialization_pressure=0.006.
+  - 2b at 2099 now ~1.02-1.06 (above 1.0), consistent with hypothesis that
+    decarbonization-only does not resolve the carbon cycle deficit.
 
 ⚠️  IMPORTANT LIMITATIONS
     All parameters, rates, and trajectories are HYPOTHETICAL.
@@ -127,21 +138,33 @@ class ScenarioParameters:
     # HYPOTHETICAL: annual emission growth in BAU
     bau_emission_growth: float = 0.004
 
-    # --- Realistic global decarbonization decomposition (v3) ---
+    # --- Realistic global decarbonization decomposition (v3/v4) ---
     # HYPOTHETICAL: rate at which developed-nation blocs cut annual emissions
     developed_country_reduction_rate:    float = 0.018
     # HYPOTHETICAL: annual emission expansion from developing-nation industrialization
-    developing_country_emissions_growth: float = 0.008
+    # (v4: raised from 0.008 to 0.010 — more aggressive emerging-economy buildout)
+    developing_country_emissions_growth: float = 0.010
     # HYPOTHETICAL: additional demand from global population increase
-    population_energy_demand_growth:     float = 0.003
+    # (v4: raised from 0.003 to 0.004)
+    population_energy_demand_growth:     float = 0.004
     # HYPOTHETICAL: ongoing industrialization pressure (energy infrastructure buildout)
-    industrialization_pressure:          float = 0.004
-    # HYPOTHETICAL: net global effective rate = 0.018 - 0.008 - 0.003 - 0.004 = 0.003 / yr
-    # Represents a world where developed-country cuts are largely offset by
-    # developing-country and population-driven demand growth.
-    net_global_decarbonization_rate:     float = 0.003
-    # HYPOTHETICAL: emission floor for realistic scenario; represents residual
-    # global baseline from developing-world industrialization that is hard to eliminate
+    # (v4: raised from 0.004 to 0.006)
+    industrialization_pressure:          float = 0.006
+    # HYPOTHETICAL: net global effective rate
+    #   = developed_country_reduction_rate
+    #     - developing_country_emissions_growth
+    #     - population_energy_demand_growth
+    #     - industrialization_pressure
+    #   = 0.018 - 0.010 - 0.004 - 0.006 = -0.002 / yr
+    #
+    # SIGN CONVENTION:
+    #   positive  = net global emission DECLINE (developed cuts exceed developing growth)
+    #   negative  = net global emission GROWTH  (developing growth exceeds developed cuts)
+    #
+    # v4 uses -0.002: developing-world growth MORE THAN OFFSETS developed-world cuts.
+    # This is not a recovery pathway. CO2 pressure continues to rise through 2099.
+    net_global_decarbonization_rate:     float = -0.002
+    # HYPOTHETICAL: emission floor (for decline scenarios) / safety lower bound
     realistic_emission_floor:            float = 0.10
 
     # --- Fixation restoration rates ---
@@ -231,8 +254,9 @@ class ScenarioEngine:
         realistic_decarb     : when reduce_emissions=True, use the realistic
                                net_global_decarbonization_rate instead of the
                                announced emission_reduction_rate.
-                               Represents developed-country cuts partially or
-                               largely offset by developing-country growth.
+                               A negative net_global_decarbonization_rate means
+                               developing-world growth exceeds developed-world cuts
+                               → net global emission GROWTH (not decline).
         """
         T  = self.params.projection_years
         p  = self.params
@@ -257,14 +281,13 @@ class ScenarioEngine:
             # --- Emission trajectory ---
             if reduce_emissions:
                 if realistic_decarb:
-                    # HYPOTHETICAL: net global rate after developed cuts are
-                    # partially offset by developing-world emissions growth,
-                    # population demand, and industrialization pressure.
-                    # Floor is higher than announced scenario (residual baseline).
-                    emission[t] = max(
-                        p.realistic_emission_floor,
-                        emission[t - 1] - p.net_global_decarbonization_rate,
-                    )
+                    # HYPOTHETICAL: net global emission change.
+                    # emission[t] = emission[t-1] - net_global_decarbonization_rate
+                    #   positive rate → emission declines  (developed cuts > developing growth)
+                    #   negative rate → emission grows     (developing growth > developed cuts)
+                    # np.clip ensures: floor ≤ emission ≤ 1.0 (handles both directions).
+                    raw = emission[t - 1] - p.net_global_decarbonization_rate
+                    emission[t] = float(np.clip(raw, p.realistic_emission_floor, 1.0))
                 else:
                     # HYPOTHETICAL: announced policy-target pace (~net zero by 2050)
                     emission[t] = max(0.02, emission[t - 1] - p.emission_reduction_rate)
@@ -468,21 +491,25 @@ def main() -> None:
     gap_decarb = sc_real["co2_pressure"][-1] - sc_ann["co2_pressure"][-1]
     print(
         f"\n  Decarbonization realism gap at 2099 (2b minus 2a): {gap_decarb:+.3f}"
-        "\n  This gap represents the CO2 cost of developing-world emission"
-        "\n  growth offsetting developed-world policy commitments."
+        "\n  This gap represents the CO2 cost of developing-world growth"
+        "\n  exceeding developed-world cuts (net global emission growth)."
         "\n  (HYPOTHETICAL -- depends entirely on assumed offset rates)"
     )
     print(
         "\n  Key conceptual conclusions (HYPOTHETICAL -- illustrative only):"
-        "\n  - 2a (Announced Decarb) and 2b (Realistic Decarb) diverge over time"
-        "\n    because net global emissions remain higher for much longer in 2b."
-        "\n  - Decarbonization alone is not a single physical process."
-        "\n    Its effectiveness depends on whether global total emissions actually"
-        "\n    decline -- which requires developing economies to also transition."
-        "\n  - Fixation restoration alone cannot compensate for continued emissions."
-        "\n  - Only the Integrated approach addresses both pathways simultaneously."
-        "\n  - COVID-19 (2020) caused a temporary emission shock, not structural"
-        "\n    decarbonization. This model does not model temporary shocks."
+        "\n  - 2b (Realistic) CO2 pressure stays ABOVE 1.0 at 2099."
+        "\n    Realistic decarbonization is NOT a recovery pathway."
+        "\n    It only marginally slows accumulation relative to BAU."
+        "\n  - Without restoring carbon fixation and absorption systems,"
+        "\n    atmospheric CO2 pressure does not meaningfully decline."
+        "\n    Land fixation, ocean uptake, and soil health remain degraded."
+        "\n    Degradation release and legacy warming pressure continue."
+        "\n  - Decarbonization alone (even announced) does not restore sinks."
+        "\n    2a (Announced, 0.47) reflects an optimistic policy assumption,"
+        "\n    not an observed global structural trend."
+        "\n  - Fixation restoration alone cannot compensate for continuing emissions."
+        "\n  - Only Integrated Nature-Complementary addresses both pathways."
+        "\n  - COVID-19 (2020) was a temporary shock, not structural change."
     )
     print("\n  WARNING: All values are HYPOTHETICAL. See MODEL_LIMITATIONS.md.")
     print("=" * 72)

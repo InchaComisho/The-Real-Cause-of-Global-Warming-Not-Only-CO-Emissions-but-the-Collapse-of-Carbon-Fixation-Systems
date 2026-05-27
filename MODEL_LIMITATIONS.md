@@ -227,7 +227,7 @@ As of the model's publication date (May 2026), global CO₂ emissions have not e
 
 ### How the realistic scenario is modelled (HYPOTHETICAL)
 
-`scenario_examples.py` (v3) introduces a second decarbonization scenario:
+`scenario_examples.py` (v4) models a world where developing-world growth **exceeds** developed-world cuts:
 
 **2b. Realistic Global Decarbonization Only**
 
@@ -236,22 +236,44 @@ The emission trajectory is governed by:
 ```
 net_global_decarbonization_rate  
   = developed_country_reduction_rate         (0.018 / yr)
-  - developing_country_emissions_growth      (0.008 / yr)
-  - population_energy_demand_growth          (0.003 / yr)
-  - industrialization_pressure               (0.004 / yr)
-  = 0.003 / yr  (net)
+  - developing_country_emissions_growth      (0.010 / yr)
+  - population_energy_demand_growth          (0.004 / yr)
+  - industrialization_pressure               (0.006 / yr)
+  = 0.018 - 0.020 = -0.002 / yr
 ```
 
-All four component rates are **HYPOTHETICAL**. They do not reproduce any specific historical dataset. They are chosen to illustrate the structural logic that offset pressures can substantially slow the effective global emission trajectory.
+A **negative** value means net global emission GROWTH (not decline).
+
+Sign convention: positive = net reduction; negative = net growth.
+
+The emission update is: `emission[t] = clip(emission[t-1] − net_rate, floor=0.10, ceiling=1.0)`
+
+With `net_rate = −0.002`, this becomes `emission[t] = clip(emission[t-1] + 0.002, 0.10, 1.0)` — a slight annual growth.
+
+All four component rates are **HYPOTHETICAL**. They do not reproduce any specific historical dataset. They are chosen to illustrate the structural logic that offset pressures can exceed developed-world cuts, resulting in continued net global emission growth despite announced policy commitments.
 
 | Component | Default value | Calibration |
 |---|---|---|
 | `developed_country_reduction_rate` | 0.018 / yr | 🔴 Hypothetical |
-| `developing_country_emissions_growth` | 0.008 / yr | 🔴 Hypothetical |
-| `population_energy_demand_growth` | 0.003 / yr | 🔴 Hypothetical |
-| `industrialization_pressure` | 0.004 / yr | 🔴 Hypothetical |
-| `net_global_decarbonization_rate` | 0.003 / yr | 🔴 Hypothetical (derived) |
+| `developing_country_emissions_growth` | 0.010 / yr | 🔴 Hypothetical |
+| `population_energy_demand_growth` | 0.004 / yr | 🔴 Hypothetical |
+| `industrialization_pressure` | 0.006 / yr | 🔴 Hypothetical |
+| `net_global_decarbonization_rate` | −0.002 / yr (net growth) | 🔴 Hypothetical (derived) |
 | `realistic_emission_floor` | 0.10 | 🔴 Hypothetical |
+
+### Scenario 2b is NOT a recovery pathway
+
+This is a critical limitation that must be stated explicitly:
+
+- **Land carbon fixation does not recover** in Scenario 2b. With no restoration and continued high emissions, terrestrial fixation declines similarly to BAU.
+- **Ocean carbon uptake does not recover.** Warming pressure, stratification, and degradation continue.
+- **Soil microbial health remains degraded.** Degradation release continues.
+- **Legacy warming pressure continues.** CO₂ pressure above the starting level drives ongoing fixation decline through the warming feedback.
+- **Carbon sink deficit remains unresolved.** The structural imbalance — the Earth emitting more carbon than it can fix — continues throughout the projection.
+
+The model result at 2099: CO₂ pressure ≈ 1.030 — clearly **above 1.0** and close to BAU (1.094). This demonstrates that realistic decarbonization without fixation restoration only marginally slows accumulation; it does not constitute a resolution of the climate system deficit.
+
+The previous v3 result of 0.858 was too optimistic because it modelled a slow net decline (−0.003/yr), which still implied emissions eventually falling and a partial improvement in CO₂ trajectory. The v4 value of −0.002/yr (net growth) correctly reflects the hypothesis that developing-world demand growth can structurally exceed current developed-world emission cuts.
 
 ### What these two scenarios can and cannot claim
 
@@ -259,8 +281,9 @@ All four component rates are **HYPOTHETICAL**. They do not reproduce any specifi
 |---|---|
 | Announced Decarb (2a) represents a coherent optimistic policy trajectory | ✅ Yes — as a structural assumption |
 | Realistic Decarb (2b) represents an observed real-world trajectory | ❌ No — it is a hypothetical illustration |
-| The gap between 2a and 2b (CO₂ pressure at 2099: 0.388 units) is quantitatively accurate | ❌ No — depends entirely on hypothetical rates |
-| The gap illustrates the structural logic that offset pressures matter | ✅ Yes — as a directional illustration |
+| 2b is "not a recovery pathway" in structural terms | ✅ Yes — consistent with the repository hypothesis |
+| The gap between 2a and 2b (~0.56 CO₂ pressure units at 2099) is quantitatively accurate | ❌ No — depends entirely on hypothetical rates |
+| The gap illustrates the structural logic that offset pressures determine whether decarb works | ✅ Yes — as a directional illustration |
 | Either scenario should be used for policy conclusions | ❌ No — calibration against real emission databases required |
 
 ### What calibration would require

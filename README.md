@@ -819,11 +819,11 @@ Projects five intervention strategies forward from the estimated 2025 starting s
 |---|---|---|---|
 | 1. Business as Usual | Continuing growth | None | |
 | 2a. Announced Decarbonization Only | Aggressive reduction (~net zero by 2050) | None | Optimistic: all nations meet policy targets |
-| 2b. Realistic Global Decarbonization Only | Slow net decline | None | Realistic: developed cuts offset by developing growth |
+| 2b. Realistic Global Decarbonization Only | Net emission growth | None | Realistic: developing growth exceeds developed cuts |
 | 3. Fixation Restoration Only | Continuing growth | Active forest, soil, ocean | |
 | 4. Integrated Nature-Complementary Approach | Aggressive reduction | Active restoration | |
 
-Scenario 2b decomposes global emissions into: `developed_country_reduction_rate − developing_country_emissions_growth − population_energy_demand_growth − industrialization_pressure` (all HYPOTHETICAL; net = 0.003/yr).
+Scenario 2b decomposes global emissions into: `developed_country_reduction_rate − developing_country_emissions_growth − population_energy_demand_growth − industrialization_pressure` (all HYPOTHETICAL; net = −0.002/yr, meaning net global emissions **grow** because developing-world pressures exceed developed-country cuts). Without restoring carbon fixation or absorption systems, atmospheric CO₂ pressure does not meaningfully decline under this scenario.
 
 > **On COVID-19:** The 2020 global emissions decline was a pandemic-driven temporary shock, not structural decarbonization. It is not modelled here.
 
@@ -838,7 +838,7 @@ python scenario_examples.py
 - Saved as `figures/scenario_comparison_output.png`.
 
 **Key point:**
-Scenario 2a (Announced) and 2b (Realistic) diverge significantly by 2099 — the realism gap is approximately +0.388 CO₂ pressure units (HYPOTHETICAL). This illustrates that decarbonization effectiveness depends on whether *global total* emissions actually decline, not just developed-country totals. Scenario 4 (Integrated Nature-Complementary) produces the best outcome by addressing both pathways simultaneously.
+Scenario 2a (Announced) and 2b (Realistic) diverge significantly by 2099 — the realism gap is approximately +0.560 CO₂ pressure units (HYPOTHETICAL). Scenario 2b ends above 1.0 CO₂ pressure, reflecting net emission *growth* rather than decline — it is **not** a recovery pathway. This illustrates that decarbonization effectiveness depends on whether *global total* emissions actually decline, not just developed-country totals. Scenario 4 (Integrated Nature-Complementary) produces the best outcome by addressing both emission reduction and fixation system restoration simultaneously.
 
 ---
 
