@@ -244,6 +244,90 @@ Until these calibration steps are completed, **no quantitative comparison betwee
 
 ---
 
+## Appendix: `intervention_technology_model.py` — Technology Limitations
+
+### What this model does
+
+`intervention_technology_model.py` extends the scenario framework to include five proposed natural-complementary technologies: OBS (Ocean Breathing System), OTU (Ocean Thermal / Upwelling Unit), UMC (Ultrasonic Mist Cooling), HRS (Humus Recycling System), and DGS (Desert Greening Support). It also introduces a **thermal stress index** as a new state variable, driven by CO₂ pressure feedback and reduced by UMC deployment.
+
+### Technology effect parameters (all HYPOTHETICAL)
+
+| Technology | Parameter | Value | Role | Calibration Status |
+|---|---|---|---|---|
+| OBS | `obs_ocean_health_rate` | 0.008/yr | Deep-O₂ → ocean health | 🔴 Hypothetical |
+| OBS | `obs_plankton_recovery` | 0.005/yr | Plankton productivity | 🔴 Hypothetical |
+| OBS | `obs_uptake_boost` | 0.004/yr | Direct CO₂ uptake boost | 🔴 Hypothetical |
+| OTU | `otu_upwelling_rate` | 0.006/yr | Nutrient upwelling | 🔴 Hypothetical |
+| OTU | `otu_recovery_rate` | 0.004/yr | Ocean metabolic recovery | 🔴 Hypothetical |
+| UMC | `umc_thermal_rate` | 0.012/yr | Thermal stress reduction | 🔴 Hypothetical |
+| UMC | `umc_land_benefit` | 0.003/yr | Indirect land fixation gain | 🔴 Hypothetical |
+| HRS | `hrs_soil_rate` | 0.010/yr | Soil microbial recovery | 🔴 Hypothetical |
+| HRS | `hrs_terr_boost` | 0.005/yr | Land fixation improvement | 🔴 Hypothetical |
+| DGS | `dgs_greening_rate` | 0.005/yr | New vegetation area/yr | 🔴 Hypothetical |
+| DGS | `dgs_max_new_area` | 0.300 | Max restorable fraction | 🔴 Hypothetical |
+| DGS | `dgs_fixation_boost` | 0.300 | Max add. fixation at full area | 🔴 Hypothetical |
+| All | `thermal_bau_growth` | 0.005/yr | BAU thermal stress growth | 🔴 Hypothetical |
+| All | `thermal_co2_feedback` | 0.006/yr | CO₂ → thermal amplification | 🔴 Hypothetical |
+| All | `thermal_land_coupling` | 0.120 | Thermal → land fixation loss | 🔴 Hypothetical |
+| All | `thermal_ocean_coupling` | 0.080 | Thermal → ocean uptake loss | 🔴 Hypothetical |
+
+### What field validation would require
+
+**OBS (Ocean Breathing System):**
+- Controlled mesocosm studies measuring O₂ injection effects on plankton productivity and carbon export flux.
+- Assessment of nutrient balance disruption, dead-zone recovery rates, and potential for unintended ecological effects (e.g., altered food-web dynamics, invasive species vectors).
+- Scaling studies: single-unit pilot → regional array → open-ocean deployment.
+- Monitoring protocols for ocean acidification interaction effects.
+
+**OTU (Ocean Thermal / Upwelling Unit):**
+- Pilot upwelling experiments measuring nutrient flux, surface productivity, and net CO₂ exchange.
+- Risk assessment for disruption of natural thermal stratification, AMOC interaction, and deep-water current patterns.
+- Studies of potential negative outcomes: upwelling of deep CO₂-rich water offsetting biological pump gains.
+- Coastal vs. open-ocean siting constraints.
+
+**UMC (Ultrasonic Mist Cooling):**
+- Field trials measuring effective thermal reduction radius, water consumption rates, and energy requirements.
+- Studies of interaction effects with local precipitation patterns, humidity, and urban heat island dynamics.
+- Assessment at regional scale: cumulative water use vs. local water cycle capacity.
+- Indirect ecological effects of altered local microclimate on surrounding vegetation.
+
+**HRS (Humus Recycling System):**
+- Field trials measuring actual humus formation rates from food waste, fallen leaves, and organic biomass inputs.
+- Soil carbon stabilization studies: distinguishing labile from stable carbon fractions.
+- Microbial community recovery timescales under regenerative input regimes.
+- Contamination risk assessment for urban organic waste streams.
+
+**DGS (Desert Greening Support):**
+- Regional pilots measuring soil formation rates under humus import + vegetation establishment.
+- Long-term carbon fixation monitoring (FLUXNET-style eddy covariance) on restored sites.
+- Hydrological studies: vegetation water demand vs. local groundwater and precipitation availability.
+- Biodiversity risk assessment: native species compatibility, invasive species control.
+
+### Structural limitations specific to this model
+
+1. **Technology effects are additive and linear.** Real-world interactions between OBS, OTU, UMC, HRS, and DGS may be synergistic, antagonistic, or subject to diminishing returns not captured here.
+
+2. **Scale factor is a global uniform multiplier.** Real deployment would be geographically uneven, with local saturation effects, transport costs, and site-specific constraints not modelled.
+
+3. **Thermal stress is a single global index.** Regional variation (Arctic amplification, tropical wet-bulb limits, monsoon disruption) is not captured.
+
+4. **No energy budget or resource constraint.** Operating OBS, OTU, and UMC requires energy and materials. The model does not account for the energy-carbon footprint of technology deployment.
+
+5. **No ecological risk feedback.** If OBS or OTU deployment has negative side effects (e.g., deep CO₂ upwelling, habitat disruption), those feedbacks are not modelled.
+
+### What this model can and cannot claim
+
+| Claim | Valid? |
+|---|---|
+| Technologies are correctly defined as a separate intervention pathway | ✅ Yes — structurally appropriate |
+| The direction of effects (OBS improves ocean uptake, UMC reduces thermal stress) is consistent with proposed mechanisms | ✅ Tentatively — as directional hypotheses |
+| The magnitude of technology effects represents real-world impact | ❌ No — all hypothetical |
+| The scale sweep correctly shows that local-scale deployment has negligible planetary effect | ✅ Yes — follows from the scale_factor multiplier structure |
+| The model proves OBS/OTU/UMC would work as described | ❌ No — field validation required |
+| The model supports OBS/OTU/UMC as worthy of further research and pilot testing | ✅ Tentatively — as a structural rationale |
+
+---
+
 ## Author
 
 Master

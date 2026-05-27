@@ -863,14 +863,55 @@ The gap between the two lines shows how much the fixation restoration pathway co
 
 ---
 
+---
+
+### `intervention_technology_model.py` — Technology-Intervention Scenario Model (2025–2099)
+
+**Purpose:**
+Extends the scenario framework to include five direct natural-complementary technology interventions:
+
+| Technology | Modelled Effect |
+|---|---|
+| **OBS** — Ocean Breathing System | Deep-ocean oxygenation, vertical circulation support, plankton productivity recovery, ocean CO₂ uptake enhancement |
+| **OTU** — Ocean Thermal / Upwelling Unit | Controlled nutrient upwelling, surface biological productivity support, ocean metabolic recovery |
+| **UMC** — Ultrasonic Mist Cooling | Evaporative cooling, urban heat reduction, surface thermal stress reduction |
+| **HRS** — Humus Recycling System | Food loss, organic waste, leaves, biomass → humus precursor; soil microbial recovery; soil carbon storage increase; water retention improvement |
+| **DGS** — Desert Greening Support | Humus import/export model, soil formation support, vegetation expansion into degraded land, new terrestrial carbon fixation area |
+
+Five scenarios are compared:
+
+| Scenario | Emissions | Natural Restoration | Technologies |
+|---|---|---|---|
+| 1. Baseline | Growing | None | None |
+| 2. Decarbonization Only | Aggressive reduction | None | None |
+| 3. Natural Sink Restoration Only | Growing | Active | None |
+| 4. Direct Cooling Technologies Only | Growing | None | All five (at scale) |
+| 5. Full Integrated Nature-Complementary System | Aggressive reduction | Active | All five (at scale) |
+
+Six state variables are tracked: CO₂ pressure (unbounded), land carbon fixation capacity, ocean CO₂ uptake capacity, thermal stress index, ecosystem recovery index (composite), and new vegetation area from desert greening.
+
+A **deployment scale sweep** (local → city → regional → continental → planetary) shows the minimum scale at which technology deployment produces meaningful planetary-level impact on CO₂ pressure at 2099.
+
+**Run:**
+```bash
+python intervention_technology_model.py
+```
+
+**Output:**
+- 6-panel figure: 5 time-series panels (CO₂ pressure, land fixation, ocean uptake, thermal stress, ecosystem recovery) + scale sweep panel.
+- Summary table printed to console.
+- Saved as `figures/intervention_technology_model_output.png`.
+
+**Key point:**
+The model illustrates that OBS, OTU, UMC, HRS, and DGS can improve ocean uptake capacity, reduce thermal stress, and enhance land fixation — but at local or city scale their planetary effect is negligible. Meaningful impact requires continental-to-planetary deployment. Direct technologies alone cannot stop CO₂ accumulation if emissions continue. Only the Full Integrated approach (emission reduction + natural restoration + technologies at scale) produces both CO₂ drawdown and maintained ecosystem recovery simultaneously.
+
+> ⚠️ OBS, OTU, and UMC are proposed technologies whose real-world effects have not been validated in field studies. All parameters are hypothetical. Field validation, ecological risk assessment, and scale testing are required before any real-world application. See [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md).
+
+---
+
 ### Output Figures
 
-Running each script saves a figure to the project root directory.
-To redirect output to the `figures/` directory, modify the `plt.savefig()` path in each script:
-
-```python
-plt.savefig("figures/causal_carbon_model_output.png", dpi=150, bbox_inches="tight")
-```
+All scripts save figures directly to the `figures/` directory.
 
 ---
 
@@ -879,5 +920,6 @@ plt.savefig("figures/causal_carbon_model_output.png", dpi=150, bbox_inches="tigh
 - All parameter values are normalized [0.0, 1.0] and **hypothetical**. They do not represent real-world measurements.
 - These models are **not** comparable to IPCC-class earth system models (CMIP6, etc.).
 - Scenario outputs are **not** climate projections and should not be used for policy decisions.
+- OBS, OTU, and UMC are proposed technologies. Their effects in this model are hypothetical and have not been validated in field studies or peer-reviewed literature.
 - See [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md) for a complete inventory of all hypothetical parameters and structural limitations.
 
