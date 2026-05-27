@@ -1,40 +1,67 @@
 """
 scenario_examples.py
 =====================
-Scenario Comparison — Four Climate Intervention Strategies
+Scenario Comparison — Five Climate Intervention Strategies
 
 Starting from the 2025 state estimated by the historical_phase_model,
-this module projects 75 years forward under four intervention scenarios:
+this module projects 75 years forward under five intervention scenarios:
 
   Scenario 1 — Business as Usual:
       No significant intervention. Emissions continue to grow.
       Carbon fixation systems continue to degrade.
 
-  Scenario 2 — Decarbonization Only:
-      CO₂ emissions are reduced aggressively (net zero by ~2050).
+  Scenario 2a — Announced Decarbonization Only:
+      Policy targets met globally. Global emissions decline aggressively
+      (~net zero by ~2050). Optimistic assumption.
       No active restoration of carbon fixation systems.
       Fixation systems continue to decline passively.
 
-  Scenario 3 — Carbon Fixation Restoration Only:
+  Scenario 2b — Realistic Global Decarbonization Only:
+      Developed-country emission cuts are partially offset by:
+        - developing-country industrialization and energy demand growth
+        - population-driven demand growth
+      Net global emissions decline only slowly.
+      Carbon sinks remain degraded. Degradation release continues.
+      Legacy warming pressure remains. No active restoration.
+      Result: slower accumulation at best, not CO2 recovery.
+
+  Scenario 3 — Fixation Restoration Only:
       Active restoration of forests, soils, and marine ecosystems.
-      No change in emission trajectory (emissions continue).
+      No change in emission trajectory (emissions continue growing).
       Fixation capacity recovers gradually.
 
-  Scenario 4 — Integrated Approach:
-      Aggressive emission reduction (decarbonization).
+  Scenario 4 — Integrated Nature-Complementary Approach:
+      Aggressive emission reduction (announced decarbonization pace).
       Active restoration of terrestrial and marine carbon fixation systems.
       Both pathways addressed simultaneously.
 
-Purpose: To illustrate that the multi-cause hypothesis implies different
-policy priorities than the single-cause (emissions-only) model.
+Purpose: To illustrate that (1) the multi-cause hypothesis implies
+different policy priorities than the single-cause (emissions-only) model,
+and (2) "decarbonization only" is not a single physical process but a
+policy assumption whose real-world effectiveness depends on whether global
+total emissions actually decline — which has not been structurally achieved
+as of the model's publication date.
+
+COVID-19 note:
+  Global emissions temporarily declined in 2020 due to pandemic-related
+  activity reductions. This is treated as a temporary external shock, not
+  as evidence of sustained structural decarbonization.
 
 Change log (v2):
-  - Removed max(0.0, ...) floor from _co2_delta so that strong fixation
-    recovery can produce net CO2 drawdown (negative delta), which is the
-    physically correct behaviour when restored fixation exceeds emissions.
-  - Added co2_pressure (unbounded float) alongside co2 (clipped [0,1]).
-    co2_pressure is used in comparison plots and the summary table so
-    that scenario differences are not masked by the hard [0,1] ceiling.
+  - Removed max(0.0, ...) floor from _co2_delta to allow CO2 drawdown.
+  - Added co2_pressure (unbounded) alongside co2 (clipped [0,1]).
+
+Change log (v3):
+  - Split "Decarbonization Only" into:
+      2a. Announced Decarbonization Only  (fast, policy-target pace)
+      2b. Realistic Global Decarbonization Only
+          (slow net decline; developed cuts offset by developing growth)
+  - Added ScenarioParameters for realistic decomposition:
+      developed_country_reduction_rate, developing_country_emissions_growth,
+      population_energy_demand_growth, industrialization_pressure,
+      net_global_decarbonization_rate, realistic_emission_floor.
+  - run_scenario gains `realistic_decarb` flag.
+  - "Integrated Approach" renamed to "Integrated Nature-Complementary Approach".
 
 ⚠️  IMPORTANT LIMITATIONS
     All parameters, rates, and trajectories are HYPOTHETICAL.
@@ -95,10 +122,27 @@ class ScenarioParameters:
     projection_years: int = 75
 
     # --- Emission trajectories ---
-    # HYPOTHETICAL: annual emission reduction rate in decarbonization scenarios
-    emission_reduction_rate: float = 0.018   # ~net zero by 2050 if starting at 0.75
+    # HYPOTHETICAL: announced decarbonization rate (policy-target pace; ~net zero by 2050)
+    emission_reduction_rate: float = 0.018
     # HYPOTHETICAL: annual emission growth in BAU
     bau_emission_growth: float = 0.004
+
+    # --- Realistic global decarbonization decomposition (v3) ---
+    # HYPOTHETICAL: rate at which developed-nation blocs cut annual emissions
+    developed_country_reduction_rate:    float = 0.018
+    # HYPOTHETICAL: annual emission expansion from developing-nation industrialization
+    developing_country_emissions_growth: float = 0.008
+    # HYPOTHETICAL: additional demand from global population increase
+    population_energy_demand_growth:     float = 0.003
+    # HYPOTHETICAL: ongoing industrialization pressure (energy infrastructure buildout)
+    industrialization_pressure:          float = 0.004
+    # HYPOTHETICAL: net global effective rate = 0.018 - 0.008 - 0.003 - 0.004 = 0.003 / yr
+    # Represents a world where developed-country cuts are largely offset by
+    # developing-country and population-driven demand growth.
+    net_global_decarbonization_rate:     float = 0.003
+    # HYPOTHETICAL: emission floor for realistic scenario; represents residual
+    # global baseline from developing-world industrialization that is hard to eliminate
+    realistic_emission_floor:            float = 0.10
 
     # --- Fixation restoration rates ---
     # HYPOTHETICAL: annual improvement in terrestrial fixation under active restoration
@@ -131,7 +175,7 @@ class ScenarioParameters:
 
 class ScenarioEngine:
     """
-    Projects climate system state forward under four scenarios.
+    Projects climate system state forward under five scenarios.
     All dynamics are HYPOTHETICAL and conceptual.
     """
 
@@ -171,18 +215,24 @@ class ScenarioEngine:
     def run_scenario(
         self,
         name: str,
-        reduce_emissions: bool,
+        reduce_emissions:    bool,
         restore_terrestrial: bool,
-        restore_ocean: bool,
+        restore_ocean:       bool,
+        realistic_decarb:    bool = False,
     ) -> Dict[str, np.ndarray]:
         """
         Run a single scenario for projection_years timesteps.
 
         Parameters
         ----------
-        reduce_emissions     : apply decarbonization trajectory
+        reduce_emissions     : apply a decarbonization trajectory
         restore_terrestrial  : apply soil and forest restoration
         restore_ocean        : apply marine ecosystem restoration
+        realistic_decarb     : when reduce_emissions=True, use the realistic
+                               net_global_decarbonization_rate instead of the
+                               announced emission_reduction_rate.
+                               Represents developed-country cuts partially or
+                               largely offset by developing-country growth.
         """
         T  = self.params.projection_years
         p  = self.params
@@ -206,7 +256,18 @@ class ScenarioEngine:
         for t in range(1, T):
             # --- Emission trajectory ---
             if reduce_emissions:
-                emission[t] = max(0.02, emission[t - 1] - p.emission_reduction_rate)
+                if realistic_decarb:
+                    # HYPOTHETICAL: net global rate after developed cuts are
+                    # partially offset by developing-world emissions growth,
+                    # population demand, and industrialization pressure.
+                    # Floor is higher than announced scenario (residual baseline).
+                    emission[t] = max(
+                        p.realistic_emission_floor,
+                        emission[t - 1] - p.net_global_decarbonization_rate,
+                    )
+                else:
+                    # HYPOTHETICAL: announced policy-target pace (~net zero by 2050)
+                    emission[t] = max(0.02, emission[t - 1] - p.emission_reduction_rate)
             else:
                 emission[t] = min(1.0, emission[t - 1] + p.bau_emission_growth)
 
@@ -257,16 +318,23 @@ class ScenarioEngine:
                 reduce_emissions=False, restore_terrestrial=False, restore_ocean=False,
             ),
             self.run_scenario(
-                "2. Decarbonization Only",
+                "2a. Announced Decarbonization Only",
                 reduce_emissions=True,  restore_terrestrial=False, restore_ocean=False,
+                realistic_decarb=False,
+            ),
+            self.run_scenario(
+                "2b. Realistic Global Decarbonization Only",
+                reduce_emissions=True,  restore_terrestrial=False, restore_ocean=False,
+                realistic_decarb=True,
             ),
             self.run_scenario(
                 "3. Fixation Restoration Only",
                 reduce_emissions=False, restore_terrestrial=True,  restore_ocean=True,
             ),
             self.run_scenario(
-                "4. Integrated Approach",
+                "4. Integrated Nature-Complementary Approach",
                 reduce_emissions=True,  restore_terrestrial=True,  restore_ocean=True,
+                realistic_decarb=False,
             ),
         ]
         return scenarios
@@ -277,16 +345,25 @@ class ScenarioEngine:
 # ─────────────────────────────────────────────────────────────────
 
 SCENARIO_COLORS = {
-    "1. Business as Usual":          "#C0392B",
-    "2. Decarbonization Only":       "#E67E22",
-    "3. Fixation Restoration Only":  "#2980B9",
-    "4. Integrated Approach":        "#27AE60",
+    "1. Business as Usual":                      "#C0392B",   # red
+    "2a. Announced Decarbonization Only":         "#F0B27A",   # light orange (optimistic)
+    "2b. Realistic Global Decarbonization Only":  "#E67E22",   # dark orange  (realistic)
+    "3. Fixation Restoration Only":               "#2980B9",   # blue
+    "4. Integrated Nature-Complementary Approach": "#27AE60",  # green
 }
 SCENARIO_STYLES = {
-    "1. Business as Usual":          "-",
-    "2. Decarbonization Only":       "--",
-    "3. Fixation Restoration Only":  "-.",
-    "4. Integrated Approach":        "-",
+    "1. Business as Usual":                      "-",
+    "2a. Announced Decarbonization Only":         "--",
+    "2b. Realistic Global Decarbonization Only":  ":",
+    "3. Fixation Restoration Only":               "-.",
+    "4. Integrated Nature-Complementary Approach": "-",
+}
+SCENARIO_WIDTHS = {
+    "1. Business as Usual":                      1.5,
+    "2a. Announced Decarbonization Only":         1.5,
+    "2b. Realistic Global Decarbonization Only":  1.5,
+    "3. Fixation Restoration Only":               1.5,
+    "4. Integrated Nature-Complementary Approach": 2.2,
 }
 
 
@@ -294,11 +371,12 @@ def plot_scenario_comparison(scenarios: List[Dict]) -> None:
     import os
     os.makedirs("figures", exist_ok=True)
 
-    fig, axes = plt.subplots(2, 2, figsize=(13, 9))
+    fig, axes = plt.subplots(2, 2, figsize=(14, 9))
     fig.suptitle(
-        "Scenario Comparison: Four Climate Intervention Strategies (2025–2100)\n"
+        "Scenario Comparison: Five Climate Intervention Strategies (2025–2099)\n"
+        "2a = Announced Decarb (optimistic)   |   2b = Realistic Global Decarb (partial offset)\n"
         "⚠ HYPOTHETICAL CONCEPTUAL VALUES — Not climate projections. Not calibrated against real data.",
-        fontsize=10, fontweight="bold", color="#8B0000",
+        fontsize=9, fontweight="bold", color="#8B0000",
     )
 
     # CO2 panel uses unbounded co2_pressure so clipping does not hide differences
@@ -315,40 +393,41 @@ def plot_scenario_comparison(scenarios: List[Dict]) -> None:
                 sc["years"], sc[key],
                 color=SCENARIO_COLORS[sc["name"]],
                 linestyle=SCENARIO_STYLES[sc["name"]],
-                linewidth=2.0 if sc["name"] == "4. Integrated Approach" else 1.5,
+                linewidth=SCENARIO_WIDTHS[sc["name"]],
                 label=sc["name"],
             )
-        ax.set_title(title, fontsize=10)
-        ax.set_xlabel("Year")
+        ax.set_title(title, fontsize=9)
+        ax.set_xlabel("Year", fontsize=8)
         ax.grid(alpha=0.3)
-        ax.legend(fontsize=8)
+        ax.legend(fontsize=7)
+        ax.tick_params(labelsize=7)
 
         if key == "co2_pressure":
-            ax.set_ylabel("Unbounded accumulation index")
+            ax.set_ylabel("Unbounded accumulation index", fontsize=8)
             ax.axhline(0.55, color="#999", linewidth=0.6, linestyle=":")  # 2025 start
         else:
-            ax.set_ylabel("Normalized [0–1]")
+            ax.set_ylabel("Normalized [0–1]", fontsize=8)
             ax.set_ylim(0, 1.05)
             ax.axhline(0.5, color="#999", linewidth=0.6, linestyle=":")
 
     plt.tight_layout()
     plt.savefig("figures/scenario_comparison_output.png", dpi=150, bbox_inches="tight")
-    print("  → Saved: figures/scenario_comparison_output.png")
+    print("  -> Saved: figures/scenario_comparison_output.png")
     plt.show()
 
 
 def print_scenario_summary(scenarios: List[Dict]) -> None:
     checkpoints = [2025, 2035, 2050, 2075, 2099]
-    print(f"\n  {'Scenario':<34}  {'Year':>4}  {'CO₂-P':>7}  {'Emit':>6}  {'Terr':>6}  {'Ocean':>6}")
-    print(f"  {'─'*34}  {'─'*4}  {'─'*7}  {'─'*6}  {'─'*6}  {'─'*6}")
+    W = 44
+    print(f"\n  {'Scenario':<{W}}  {'Year':>4}  {'CO2-P':>7}  {'Emit':>6}  {'Terr':>6}  {'Ocean':>6}")
+    print("  " + "-" * (W + 38))
     for sc in scenarios:
         years = sc["years"]
         for chk in checkpoints:
             if chk in years:
                 idx = list(years).index(chk)
-                name_short = sc["name"][:34]
                 print(
-                    f"  {name_short:<34}  {chk:>4}  "
+                    f"  {sc['name'][:W]:<{W}}  {chk:>4}  "
                     f"{sc['co2_pressure'][idx]:>7.3f}  "
                     f"{sc['emission'][idx]:>6.3f}  "
                     f"{sc['terr'][idx]:>6.3f}  "
@@ -362,41 +441,51 @@ def print_scenario_summary(scenarios: List[Dict]) -> None:
 # ─────────────────────────────────────────────────────────────────
 
 def main() -> None:
-    print("=" * 70)
-    print("  Scenario Comparison (2025–2100)")
-    print("  Decarbonization only / Fixation restoration / Integrated")
-    print("  ⚠ HYPOTHETICAL CONCEPTUAL MODEL — See MODEL_LIMITATIONS.md")
-    print("=" * 70)
+    print("=" * 72)
+    print("  Scenario Comparison (2025-2099)")
+    print("  1. BAU  |  2a. Announced Decarb  |  2b. Realistic Global Decarb")
+    print("  3. Fixation Restoration  |  4. Integrated Nature-Complementary")
+    print("  WARNING: HYPOTHETICAL CONCEPTUAL MODEL -- See MODEL_LIMITATIONS.md")
+    print("=" * 72)
 
-    start   = StartingState()
-    params  = ScenarioParameters()
-    engine  = ScenarioEngine(start, params)
+    start     = StartingState()
+    params    = ScenarioParameters()
+    engine    = ScenarioEngine(start, params)
     scenarios = engine.run_all()
 
     print_scenario_summary(scenarios)
 
-    print("\n  Key observations (HYPOTHETICAL — illustrative only):")
-    sc_bau  = scenarios[0]
-    sc_dc   = scenarios[1]
-    sc_fix  = scenarios[2]
-    sc_int  = scenarios[3]
+    sc_bau   = scenarios[0]
+    sc_ann   = scenarios[1]   # 2a. Announced
+    sc_real  = scenarios[2]   # 2b. Realistic
+    sc_fix   = scenarios[3]   # 3.  Fixation
+    sc_int   = scenarios[4]   # 4.  Integrated
 
-    co2_end_year = -1
-    print(f"    BAU          CO2-pressure at 2099: {sc_bau['co2_pressure'][co2_end_year]:.3f}")
-    print(f"    Decarb only  CO2-pressure at 2099: {sc_dc['co2_pressure'][co2_end_year]:.3f}")
-    print(f"    Fixation     CO2-pressure at 2099: {sc_fix['co2_pressure'][co2_end_year]:.3f}")
-    print(f"    Integrated   CO2-pressure at 2099: {sc_int['co2_pressure'][co2_end_year]:.3f}")
+    print("  CO2 pressure at 2099 (HYPOTHETICAL):")
+    for sc in scenarios:
+        print(f"    {sc['name']:<46}  {sc['co2_pressure'][-1]:.3f}")
+
+    gap_decarb = sc_real["co2_pressure"][-1] - sc_ann["co2_pressure"][-1]
     print(
-        "\n  This model illustrates the hypothesis that:\n"
-        "  - Decarbonization alone slows but may not stabilize CO₂ if fixation\n"
-        "    systems continue to decline.\n"
-        "  - Fixation restoration alone reduces CO₂ accumulation but cannot\n"
-        "    fully offset continued high emissions.\n"
-        "  - The integrated approach produces the best outcome because it\n"
-        "    addresses both the emission pathway AND the fixation pathway.\n"
+        f"\n  Decarbonization realism gap at 2099 (2b minus 2a): {gap_decarb:+.3f}"
+        "\n  This gap represents the CO2 cost of developing-world emission"
+        "\n  growth offsetting developed-world policy commitments."
+        "\n  (HYPOTHETICAL -- depends entirely on assumed offset rates)"
     )
-    print("  ⚠ All values are HYPOTHETICAL. See MODEL_LIMITATIONS.md.")
-    print("=" * 70)
+    print(
+        "\n  Key conceptual conclusions (HYPOTHETICAL -- illustrative only):"
+        "\n  - 2a (Announced Decarb) and 2b (Realistic Decarb) diverge over time"
+        "\n    because net global emissions remain higher for much longer in 2b."
+        "\n  - Decarbonization alone is not a single physical process."
+        "\n    Its effectiveness depends on whether global total emissions actually"
+        "\n    decline -- which requires developing economies to also transition."
+        "\n  - Fixation restoration alone cannot compensate for continued emissions."
+        "\n  - Only the Integrated approach addresses both pathways simultaneously."
+        "\n  - COVID-19 (2020) caused a temporary emission shock, not structural"
+        "\n    decarbonization. This model does not model temporary shocks."
+    )
+    print("\n  WARNING: All values are HYPOTHETICAL. See MODEL_LIMITATIONS.md.")
+    print("=" * 72)
 
     plot_scenario_comparison(scenarios)
 

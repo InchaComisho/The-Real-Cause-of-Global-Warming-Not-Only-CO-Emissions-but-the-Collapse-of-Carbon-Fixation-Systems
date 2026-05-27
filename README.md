@@ -810,17 +810,22 @@ When all three loops operate simultaneously, CO₂ accumulation and warming acce
 
 ---
 
-### `scenario_examples.py` — Four Scenario Comparison (2025–2099)
+### `scenario_examples.py` — Five Scenario Comparison (2025–2099)
 
 **Purpose:**
-Projects four intervention strategies forward from the estimated 2025 starting state:
+Projects five intervention strategies forward from the estimated 2025 starting state:
 
-| Scenario | Emissions | Fixation Restoration |
-|---|---|---|
-| 1. Business as Usual | Continuing growth | None |
-| 2. Decarbonization Only | Aggressive reduction | None — passive decline continues |
-| 3. Fixation Restoration Only | Continuing growth | Active forest, soil, ocean restoration |
-| 4. Integrated Approach | Aggressive reduction | Active restoration of all systems |
+| Scenario | Emissions | Fixation Restoration | Note |
+|---|---|---|---|
+| 1. Business as Usual | Continuing growth | None | |
+| 2a. Announced Decarbonization Only | Aggressive reduction (~net zero by 2050) | None | Optimistic: all nations meet policy targets |
+| 2b. Realistic Global Decarbonization Only | Slow net decline | None | Realistic: developed cuts offset by developing growth |
+| 3. Fixation Restoration Only | Continuing growth | Active forest, soil, ocean | |
+| 4. Integrated Nature-Complementary Approach | Aggressive reduction | Active restoration | |
+
+Scenario 2b decomposes global emissions into: `developed_country_reduction_rate − developing_country_emissions_growth − population_energy_demand_growth − industrialization_pressure` (all HYPOTHETICAL; net = 0.003/yr).
+
+> **On COVID-19:** The 2020 global emissions decline was a pandemic-driven temporary shock, not structural decarbonization. It is not modelled here.
 
 **Run:**
 ```bash
@@ -828,12 +833,12 @@ python scenario_examples.py
 ```
 
 **Output:**
-- 2×2 panel chart comparing CO₂ index, emission rate, terrestrial fixation, and ocean uptake across all four scenarios.
+- 2×2 panel chart comparing CO₂ pressure (unbounded), emission rate, terrestrial fixation, and ocean uptake across all five scenarios.
 - Summary table printed to console.
-- Saved as `scenario_comparison_output.png`.
+- Saved as `figures/scenario_comparison_output.png`.
 
 **Key point:**
-The model illustrates that Scenario 2 (decarbonization only) may not stabilize CO₂ if fixation systems continue to decline passively. Scenario 4 (integrated) produces the most stable trajectory by addressing both the emission pathway and the fixation collapse pathway simultaneously.
+Scenario 2a (Announced) and 2b (Realistic) diverge significantly by 2099 — the realism gap is approximately +0.388 CO₂ pressure units (HYPOTHETICAL). This illustrates that decarbonization effectiveness depends on whether *global total* emissions actually decline, not just developed-country totals. Scenario 4 (Integrated Nature-Complementary) produces the best outcome by addressing both pathways simultaneously.
 
 ---
 

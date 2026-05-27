@@ -6,12 +6,14 @@
 
 ## Purpose of This Document
 
-This repository contains four Python simulation models:
+This repository contains six Python simulation models:
 
 - `causal_carbon_model.py`
 - `historical_phase_model.py`
 - `feedback_loop_simulation.py`
 - `scenario_examples.py`
+- `sensitivity_analysis.py`
+- `intervention_technology_model.py`
 
 These models were designed to **illustrate the conceptual framework** described in `README.md` and `CAUSAL_STRUCTURE.md` — specifically, the hypothesis that global warming is driven by both CO₂ emissions and the degradation of carbon fixation systems.
 
@@ -203,6 +205,71 @@ However, these models do not reproduce or validate against any of the above stud
 | The models are a valid starting point for designing verification studies | ✅ Yes — as a structural scaffold |
 
 ---
+
+---
+
+## Appendix: Decarbonization as a Policy Assumption, Not a Physical Process
+
+### Core limitation
+
+In `scenario_examples.py`, the "Announced Decarbonization Only" scenario assumes that global total CO₂ emissions decline at a rate of approximately 0.018 normalized units per year, corresponding to net-zero by around 2050 from a 2025 baseline. This represents the optimistic case where announced national and international policy targets are met globally.
+
+**This is a policy assumption, not an observed physical outcome.**
+
+### Why Announced Decarbonization is an optimistic scenario
+
+As of the model's publication date (May 2026), global CO₂ emissions have not entered a structurally sustained year-over-year decline at the scale implied by the Announced scenario. Key structural barriers include:
+
+- **Developing-nation industrialization.** Nations in South and Southeast Asia, Africa, and Latin America are actively expanding energy infrastructure, industrial capacity, and transportation networks. This drives aggregate emission growth that may offset cuts made in developed economies.
+- **Population growth.** Global population increase, particularly in regions with lower per-capita energy access, is associated with rising total energy demand even at constant per-capita efficiency levels.
+- **Electricity demand growth.** Electrification of transport, heating, and industry (which is itself part of decarbonization in developed countries) increases total electricity demand, which in many developing regions is still supplied largely from fossil sources.
+- **COVID-19 as a temporary shock.** Global CO₂ emissions temporarily declined in 2020 due to pandemic-related reductions in transport, industry, and economic activity. This decline reversed rapidly in 2021–2022. It should be treated as a temporary external shock to the system, not as evidence of structural decarbonization. This model does not simulate temporary shocks.
+
+### How the realistic scenario is modelled (HYPOTHETICAL)
+
+`scenario_examples.py` (v3) introduces a second decarbonization scenario:
+
+**2b. Realistic Global Decarbonization Only**
+
+The emission trajectory is governed by:
+
+```
+net_global_decarbonization_rate  
+  = developed_country_reduction_rate         (0.018 / yr)
+  - developing_country_emissions_growth      (0.008 / yr)
+  - population_energy_demand_growth          (0.003 / yr)
+  - industrialization_pressure               (0.004 / yr)
+  = 0.003 / yr  (net)
+```
+
+All four component rates are **HYPOTHETICAL**. They do not reproduce any specific historical dataset. They are chosen to illustrate the structural logic that offset pressures can substantially slow the effective global emission trajectory.
+
+| Component | Default value | Calibration |
+|---|---|---|
+| `developed_country_reduction_rate` | 0.018 / yr | 🔴 Hypothetical |
+| `developing_country_emissions_growth` | 0.008 / yr | 🔴 Hypothetical |
+| `population_energy_demand_growth` | 0.003 / yr | 🔴 Hypothetical |
+| `industrialization_pressure` | 0.004 / yr | 🔴 Hypothetical |
+| `net_global_decarbonization_rate` | 0.003 / yr | 🔴 Hypothetical (derived) |
+| `realistic_emission_floor` | 0.10 | 🔴 Hypothetical |
+
+### What these two scenarios can and cannot claim
+
+| Claim | Valid? |
+|---|---|
+| Announced Decarb (2a) represents a coherent optimistic policy trajectory | ✅ Yes — as a structural assumption |
+| Realistic Decarb (2b) represents an observed real-world trajectory | ❌ No — it is a hypothetical illustration |
+| The gap between 2a and 2b (CO₂ pressure at 2099: 0.388 units) is quantitatively accurate | ❌ No — depends entirely on hypothetical rates |
+| The gap illustrates the structural logic that offset pressures matter | ✅ Yes — as a directional illustration |
+| Either scenario should be used for policy conclusions | ❌ No — calibration against real emission databases required |
+
+### What calibration would require
+
+To make these scenarios empirically grounded:
+- Replace `developed_country_reduction_rate` with observed emission trends from IEA, Global Carbon Project, or UNFCCC national inventory data for OECD nations.
+- Replace `developing_country_emissions_growth` with observed trends for non-OECD nations (IEA World Energy Outlook, BP Statistical Review).
+- Replace `population_energy_demand_growth` with UN World Population Prospects × IEA per-capita energy intensity trends.
+- Replace `industrialization_pressure` with industrial sector CO₂ growth in emerging markets (IEA Industrial Transitions, OECD Economic Outlook).
 
 ---
 
