@@ -1019,13 +1019,27 @@ For Japanese-language graph explanations: [`figures_explanation_JA.md`](figures_
 
 ![Organic Waste Desert Relay Main](figures/organic_waste_desert_relay_main.png)
 
+Baseline・Raw Organic Waste・HRS+DGS・Full Relay の4シナリオを比較する。  
+未処理有機ごみはリスクが高く、微生物多様性を損なう可能性を示す。  
+HRS+DGS+Food Relay は土壌炭素・保水・植生・微生物多様性・炭素固定の改善を示すが、残留リスクはゼロではない。  
+すべて仮説的な正規化指標であり、実測値ではない。
+
 **Preprocessing Pipeline — Waste Type Profile and Processing Level Analysis**
 
 ![Organic Waste Preprocessing Pipeline](figures/organic_waste_preprocessing_pipeline.png)
 
+有機ごみの種類と、処理レベルごとの有効収量・残留リスクを示す。  
+無処理ではリスクが高く、HRSフル処理でリスクは下がるがゼロにはならない。  
+すべて仮説的な正規化指標であり、実測値ではない。
+
 **Food Transition Relay Phases — HRS+DGS vs Full Relay**
 
 ![Organic Waste Food Transition Relay](figures/organic_waste_food_transition_relay.png)
+
+HRS+DGSのみの場合と、イモ類→豆類→ハーブ類の食物リレーを加えた場合を比較する。  
+食物リレーにより、植生被覆・微生物多様性・炭素固定ポテンシャルが高まる。  
+食料生産ポテンシャルは初期段階では低く、長期的な土壌形成モデルとして見る。  
+すべて仮説的な正規化指標であり、実測値ではない。
 
 ---
 
