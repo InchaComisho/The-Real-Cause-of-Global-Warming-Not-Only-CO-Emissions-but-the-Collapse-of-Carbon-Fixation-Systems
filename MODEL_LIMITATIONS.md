@@ -418,6 +418,79 @@ Until these calibration steps are completed, **no quantitative comparison betwee
 
 ---
 
+## Appendix D — Thermal Inertia and Recovery Deficit Constraints (v5)
+
+*Added in scenario_examples.py v5.*
+
+### Core principle
+
+This model treats decarbonization-only recovery as an **optimistic assumption** unless the following factors are explicitly resolved:
+
+1. **Thermal inertia** — committed warming from past CO₂ accumulation does not reverse quickly when emissions decline.
+2. **Ocean heat content** — stored thermal energy in the ocean continues driving surface warming independent of current emission levels.
+3. **Recurring heat shocks** — heat waves, marine heat waves, and compound droughts recur at intervals shorter than ecosystem recovery timescales.
+4. **Carbon sink degradation** — fixation systems damaged by heat shocks cannot fully recover before the next event arrives.
+5. **Recovery time deficit** — the cumulative gap between how soon heat shocks recur and how much time ecosystems need to heal.
+
+**If a decarbonization-only scenario falls below the danger threshold after 2050 without restoring carbon sinks or directly reducing thermal stress, it should be interpreted as an overly optimistic modeling assumption.**
+
+### v5 parameters (all HYPOTHETICAL)
+
+| Parameter | Default | Meaning |
+|---|---|---|
+| `baseline_temperature_rise` | 0.42 | Locked-in warming floor — thermal stress cannot fall below this without direct cooling technology |
+| `ocean_heat_inertia` | 0.006 / yr | Per-year upward thermal pressure from accumulated ocean heat content |
+| `recurring_heat_shock` | 0.06 | Thermal stress spike per heat shock event (heat waves, marine heat waves) |
+| `sink_degradation_frequency` | 0.10 | One major heat shock event per 10 years (1/frequency) |
+| `recovery_time_deficit_rate` | 0.012 / yr | Per-year deficit accumulation when ecosystems cannot recover between events |
+| `direct_cooling_absence_penalty` | 0.008 / yr | Residual per-year thermal pressure when no UMC/OBS/OTU-type cooling technology is active |
+| `baseline_terrestrial_capacity` | 0.90 | Pre-degradation terrestrial fixation baseline (used to compute sink deficit) |
+| `baseline_soil_capacity` | 0.85 | Pre-degradation soil health baseline |
+| `baseline_ocean_capacity` | 0.85 | Pre-degradation ocean uptake baseline |
+
+All of the above are **HYPOTHETICAL** and require scientific calibration before any policy conclusions can be drawn.
+
+### New state variables tracked (all HYPOTHETICAL)
+
+| Variable | Description |
+|---|---|
+| `thermal_stress_index` | Proxy for atmospheric/oceanic thermal state; normalized [0,1] |
+| `carbon_sink_deficit` | How far below pre-degradation baseline the current sinks have fallen |
+| `recovery_time_deficit` | Cumulative gap between heat shock recurrence and ecosystem recovery time |
+| `ecosystem_recovery_index` | Composite health indicator (terr 30%, soil 25%, ocean 25%, thermal 20%) |
+
+### Structural constraint: Scenario 2b danger zone
+
+In Scenario 2b (Realistic Global Decarbonization Only):
+- Net global emissions **grow** (net_global_decarbonization_rate = −0.002/yr)
+- Carbon fixation systems do not recover
+- Ocean heat content continues accumulating
+- Recurring heat shocks damage sinks faster than they can recover
+- No direct cooling technology is present
+
+As a result, `thermal_stress_index` cannot fall below `baseline_temperature_rise` (0.42) and in practice remains in the **danger zone (> 0.70)** through 2099. This is a structural constraint, not an artifact of parameter tuning.
+
+**Scenario 2b is NOT a recovery pathway.** Emissions reduction alone does not remove:
+- Accumulated ocean heat
+- Locked-in thermal inertia
+- Recurring heat shock damage
+- Recovery time deficit
+
+Direct planetary cooling (UMC/OBS/OTU-type interventions) and carbon sink restoration are both required to move from mitigation toward recovery in this conceptual model.
+
+### What this model can and cannot claim (thermal inertia)
+
+| Claim | Valid? |
+|---|---|
+| Thermal inertia should be modelled as a floor that decarbonization alone cannot remove | ✅ Yes — directionally consistent with physical climate science |
+| The specific floor value (0.42) represents a real-world temperature | ❌ No — HYPOTHETICAL normalized index only |
+| Recurring heat shocks occur at 10-year intervals | ❌ No — HYPOTHETICAL; actual frequency and severity require empirical calibration |
+| Recovery time deficit is a useful conceptual variable | ✅ Tentatively — as a structural representation of ecosystem lag |
+| The model proves thermal inertia prevents decarbonization-only recovery | ❌ No — illustrative only; not calibrated against real data |
+| The model supports further research into thermal inertia as a co-constraint | ✅ Tentatively — as a structural rationale for the hypothesis |
+
+---
+
 ## Author
 
 Master

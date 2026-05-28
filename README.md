@@ -838,7 +838,15 @@ python scenario_examples.py
 - Saved as `figures/scenario_comparison_output.png`.
 
 **Key point:**
-Scenario 2a (Announced) and 2b (Realistic) diverge significantly by 2099 — the realism gap is approximately +0.560 CO₂ pressure units (HYPOTHETICAL). Scenario 2b ends above 1.0 CO₂ pressure, reflecting net emission *growth* rather than decline — it is **not** a recovery pathway. This illustrates that decarbonization effectiveness depends on whether *global total* emissions actually decline, not just developed-country totals. Scenario 4 (Integrated Nature-Complementary) produces the best outcome by addressing both emission reduction and fixation system restoration simultaneously.
+Scenario 2a (Announced) and 2b (Realistic) diverge significantly by 2099 — the realism gap is approximately +0.560 CO₂ pressure units and +0.290 thermal stress units (HYPOTHETICAL). Scenario 2b ends above 1.0 CO₂ pressure and above 0.70 thermal stress (danger zone), reflecting net emission *growth* rather than decline — it is **not** a recovery pathway. This illustrates that decarbonization effectiveness depends on whether *global total* emissions actually decline, not just developed-country totals. Scenario 4 (Integrated Nature-Complementary) produces the best outcome by addressing both emission reduction and fixation system restoration simultaneously.
+
+**v5 — Why Realistic Decarbonization Only is not a recovery pathway (HYPOTHETICAL):**
+- Emissions reduction alone does not remove accumulated ocean heat, thermal inertia, or the locked-in baseline warming floor.
+- Recurring heat shocks damage carbon sinks faster than they can recover, accumulating a recovery time deficit.
+- Without restoring carbon fixation and carbon absorption systems, atmospheric CO₂ pressure does not meaningfully decline.
+- Direct planetary cooling (UMC/OBS/OTU-type) and carbon sink restoration are both required to move from mitigation to recovery in this conceptual model.
+
+v5 adds four new output indicators to each scenario: `thermal_stress_index`, `carbon_sink_deficit`, `recovery_time_deficit`, and `ecosystem_recovery_index` (all HYPOTHETICAL).
 
 ---
 
