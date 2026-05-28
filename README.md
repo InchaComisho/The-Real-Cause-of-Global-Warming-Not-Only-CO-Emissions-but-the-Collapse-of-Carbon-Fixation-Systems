@@ -987,6 +987,34 @@ python terraforming_scale_requirement_model.py
 
 ---
 
+### `organic_waste_desert_relay_simulation.py` — Organic Waste to Humus and Desert Food Relay Simulation
+
+Conceptual proof-of-concept simulation of the Organic Waste → HRS → DGS → Stepwise Food Transition Relay framework, derived from [ORGANIC_WASTE_HUMUS_AND_DESERT_REGENERATION_MODEL.md](https://github.com/InchaComisho/Natural-Complementary-Science/blob/main/ORGANIC_WASTE_HUMUS_AND_DESERT_REGENERATION_MODEL.md) in the Natural-Complementary-Science repository.
+
+**Four scenarios compared (2026–2075):**
+1. Baseline Desert — no organic input
+2. Organic Waste Only — raw/minimally processed (elevated risk, limited yield)
+3. HRS + DGS — fully processed organic relay (processed humus → dryland soil)
+4. HRS + DGS + Food Relay — full stepwise system (Tuber → Legume → Herb/Mixed phases)
+
+**Note:** `residual_biosecurity_risk` is **never zero** in this model. Pathogen risk is reduced by processing (sanitation, drying, heat treatment), but a non-negligible residual floor remains in all scenarios with organic input.
+
+**Run:**
+```bash
+python organic_waste_desert_relay_simulation.py
+```
+
+**Output:**
+- `figures/organic_waste_desert_relay_main.png` — 4×2 panel: 7 indices + humus pool across 4 scenarios
+- `figures/organic_waste_preprocessing_pipeline.png` — waste type profile + processing level vs yield/risk
+- `figures/organic_waste_food_transition_relay.png` — food relay phase comparison with zone annotations
+
+For Japanese-language graph explanations: [`figures_explanation_JA.md`](figures_explanation_JA.md)
+
+> All parameters are HYPOTHETICAL. Water availability (modelled as `water_stress_factor = 0.60`) is the primary real-world constraint. Results require independent scientific, sanitary, ecological, agricultural, and engineering validation.
+
+---
+
 ### Output Figures
 
 All scripts save figures directly to the `figures/` directory.
