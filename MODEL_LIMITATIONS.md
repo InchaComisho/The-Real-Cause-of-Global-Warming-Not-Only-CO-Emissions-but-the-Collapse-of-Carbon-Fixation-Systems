@@ -545,6 +545,55 @@ This model is presented to **visualize the required scale of natural-complementa
 
 ---
 
+## Appendix F — Ideal Terraforming Civilization Model Limitations
+
+*Applies to `IDEAL_TERRAFORMING_CIVILIZATION_MODEL.md`.*
+
+### What this document is
+
+`IDEAL_TERRAFORMING_CIVILIZATION_MODEL.md` is a **conceptual civilization design framework and ideal model**, NOT a scientific prediction, a policy proposal, a technical feasibility study, or an endorsement of any specific political, economic, or governance system. It describes a long-term directional vision for how human civilization might reorganize its spatial relationship with planetary life-support systems.
+
+### This is an unvalidated ideal model
+
+The following elements of the Ideal Terraforming Civilization Model are **unvalidated and potentially unrealizable** with current or foreseeable technology, social organization, and geopolitical structures:
+
+- **Pyramid Circulation Cities at scale**: No integrated city of the described type exists. The technical integration of energy, water, food, waste, and logistics described is a design ideal, not a demonstrated engineering solution.
+- **Desert greening at continental scale**: Large-scale desert greening has been attempted at small regional scales with mixed ecological outcomes. Unintended consequences for regional hydrology, albedo, and biodiversity are not captured in the model.
+- **Floating ocean cities**: Currently exist only as small experimental prototypes. The engineering, ecological, and governance challenges of open-ocean permanent human settlement are not resolved.
+- **OBS/OTU at planetary scale**: See Appendix C and E for detailed limitations. These technologies are unvalidated at any scale beyond conceptual.
+- **Voluntary civilization compression**: The assumption that human populations would voluntarily concentrate into compact urban hubs, releasing surrounding land, requires social, economic, and governance conditions that have never been achieved at the described scale.
+
+### Major unresolved ethical and social challenges
+
+The following challenges are explicitly noted in the document itself but are listed here for completeness:
+
+1. **Forced displacement risk**: Any policy movement toward population concentration risks coercion of vulnerable populations. This must be explicitly prevented through legal, democratic, and rights-based frameworks.
+2. **Indigenous land rights**: The "return of land to nature" framing must not be used to dispossess indigenous communities who are the sustainable managers of many of the landscapes in question.
+3. **International governance gap**: No institution currently exists with the mandate, authority, or legitimacy to coordinate planetary-scale terraforming activities.
+4. **Ecological risk of large-scale intervention**: Interventions at the scale described (equatorial belt deployment, ocean metabolism restoration, continental desert greening) carry unmodelled ecological risks including habitat disruption, species displacement, regional climate modification, and unintended cascade effects.
+5. **Energy and material requirements**: Building the described infrastructure requires enormous energy and material inputs whose carbon footprint is not modelled.
+6. **Equity**: Benefits must be universally accessible, not concentrated among wealthy nations or individuals. This requires redistributive mechanisms not described in the ideal model.
+
+### What the ideal model contributes
+
+Despite the above limitations, the Ideal Terraforming Civilization Model contributes:
+
+- A **directional framework**: it defines a direction (civilization compression, ecological expansion) that incremental policies can approximate even if the full ideal is never reached.
+- A **spatial reframing**: it shifts the climate debate from emissions rates (a flow problem) to land use and ecosystem integrity (a stock and structure problem).
+- A **design vocabulary**: terms like Nature-Complementary Terraforming, Earth Re-Terraforming, Planetary Metabolic Restoration, and Civilization Compression for Ecosystem Expansion provide a conceptual language for discussing civilizational-scale ecological relationships.
+- A **long-horizon perspective**: it provides a multi-generational endpoint against which current decisions can be evaluated for directional consistency.
+
+### This model cannot substitute for
+
+- Peer-reviewed scientific research on any of the technologies described.
+- Ecological impact assessments for any proposed intervention.
+- Democratic deliberation and consent of affected populations.
+- International legal frameworks for planetary-scale action.
+- Engineering feasibility studies for Pyramid Circulation Cities, Desert Hubs, or ocean platforms.
+- Economic analysis of transition pathways and financing mechanisms.
+
+---
+
 ## Author
 
 Master

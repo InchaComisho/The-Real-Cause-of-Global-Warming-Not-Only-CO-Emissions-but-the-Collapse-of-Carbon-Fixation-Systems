@@ -723,6 +723,30 @@ https://github.com/InchaComisho/The-Future-of-Search-Engines
 
 ---
 
+## Ideal Nature-Complementary Terraforming Civilization Model
+
+See [`IDEAL_TERRAFORMING_CIVILIZATION_MODEL.md`](IDEAL_TERRAFORMING_CIVILIZATION_MODEL.md)
+
+This document describes a **long-term civilizational design framework** — not a policy proposal, not a prediction, and not a mandate. It is the ideal endpoint implied by the multi-cause hypothesis of this repository: if carbon fixation collapse is the deeper cause of global warming, then the ultimate solution is not only emission reduction but the **fundamental redesign of how and where human civilization occupies the Earth's surface**.
+
+Core idea: compress human settlement into high-density, self-circulating urban units (Pyramid Circulation Cities, Desert Hubs, Coastal and Ocean Hubs); restore the released surface to the living ecosystems that manage planetary carbon, water, heat, and metabolism.
+
+Key concepts introduced:
+
+| Term | Meaning |
+|---|---|
+| **Nature-Complementary Terraforming** | Technology deployed to restore natural planetary circulation systems, not to replace them |
+| **Earth Re-Terraforming** | Deliberate reversal of unintentional planetary modification by industrial civilization |
+| **Planetary Metabolic Restoration** | Restoring the functional metabolism of Earth as a living system |
+| **Civilization Compression for Ecosystem Expansion** | Reducing human settlement area to allow living ecosystem expansion |
+
+Six implementation phases are described conceptually (not as a policy schedule):
+Phase 1: Regional Survival Hubs → Phase 2: Desert and Coastal Circulation Cities → Phase 3: Urban Heat Suppression → Phase 4: Equatorial Belt and Ocean Metabolism Restoration → Phase 5: Global Civilization Compression and Ecological Return → Phase 6: Planetary Metabolic Stabilization
+
+> **This is an ideal model, not a realistic policy proposal.** The ethical, social, legal, ecological, and technical challenges are extensive and explicitly acknowledged in the document and in [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md) Appendix F.
+
+---
+
 ## Python Conceptual Models
 
 > ⚠️ **These are conceptual proof-of-concept models, not scientific prediction tools.**
