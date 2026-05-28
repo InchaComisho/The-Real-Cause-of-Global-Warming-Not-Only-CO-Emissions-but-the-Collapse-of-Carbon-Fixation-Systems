@@ -922,6 +922,47 @@ The model illustrates that OBS, OTU, UMC, HRS, and DGS can improve ocean uptake 
 
 ---
 
+### `terraforming_scale_requirement_model.py` — Scale Requirement Analysis
+
+**Purpose:**
+Estimates the global coverage percentage of OBS/OTU/UMC/HRS/DGS deployment required to compensate a hypothetical 10% carbon sink loss from a Super El Niño-level climate shock. Compares five placement strategies across 0–30% global surface coverage in 5% steps.
+
+> **Super El Niño 10% sink loss**: This is a **hypothetical worst-case stress assumption**, NOT an observed or scientifically validated value. It is chosen to stress-test the required intervention scale under extreme conditions.
+
+**Placement strategies compared:**
+
+| Strategy | Description |
+|---|---|
+| Random Distributed | Globally dispersed; no strategic placement |
+| Urban / Coastal Only | Cities, coastlines, human infrastructure |
+| **Equatorial Belt** | Concentrated in the tropical/equatorial zone (~20°N–20°S) |
+| Ocean Current Coupled | Along major ocean currents and upwelling zones |
+| Full Planetary Network | Integrated combination of all placement types |
+
+> **Equatorial Belt Scale**: In this model, "Equatorial Belt Scale" means deployment concentrated in the equatorial zone, targeting the ITCZ, tropical ocean, tropical forests, and adjacent upwelling systems. This is treated as a **hypothetical strategic placement hypothesis**: that concentrating OBS/OTU/UMC/HRS/DGS along the equatorial belt acts on the primary coupling zone between hemispheric atmospheric circulation, ocean heat exchange, evaporative cooling, cloud formation, and phytoplankton recovery. **This hypothesis has NOT been validated.**
+
+**Run:**
+```bash
+python terraforming_scale_requirement_model.py
+```
+
+**Output:**
+- 6-panel figure: compensated sink loss vs. coverage, thermal stress reduction, ecosystem recovery, feasibility, placement comparison at 20% coverage, minimum required scale per strategy.
+- Summary tables printed to console.
+- Saved as `figures/terraforming_scale_requirement_model_output.png`.
+
+**Key point (HYPOTHETICAL):**
+- Emissions reduction alone cannot offset the carbon sink loss caused by a Super El Niño shock.
+- Below 5% global coverage, even the best placement strategy shows negligible planetary effect.
+- Equatorial Belt placement compensates ~20× more effectively per unit area than Random Distributed (HYPOTHETICAL coupling hypothesis).
+- Only Full Planetary Network (~21% coverage) and Equatorial Belt (~26% coverage) can fully offset a 10% sink loss within the 0–30% evaluated range.
+- Random and Urban placements cannot offset 10% sink loss even at 30% global coverage.
+- Feasibility is inversely related to effectiveness: the most impactful strategies require global-scale coordination currently beyond reach.
+
+> ⚠️ All parameters are HYPOTHETICAL. Equatorial belt, atmospheric circulation, and ocean current coupling effects are not validated. See [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md) Appendix E.
+
+---
+
 ### Output Figures
 
 All scripts save figures directly to the `figures/` directory.

@@ -491,6 +491,60 @@ Direct planetary cooling (UMC/OBS/OTU-type interventions) and carbon sink restor
 
 ---
 
+## Appendix E — Terraforming Scale Requirement Model Limitations
+
+*Applies to `terraforming_scale_requirement_model.py`.*
+
+### What this model is
+
+This is a **conceptual proof-of-concept (PoC)** model, NOT a scientific prediction tool. It estimates the global technology deployment coverage required to offset a hypothetical 10% carbon sink loss from a Super El Niño-level climate shock. All parameters are HYPOTHETICAL and have NOT been calibrated against observational data.
+
+### The 10% sink loss assumption
+
+- The 10% carbon sink loss figure is a **hypothetical worst-case stress assumption**, NOT an observed, validated, or consensus scientific value.
+- Real Super El Niño events produce regional and global sink anomalies that vary significantly by location, duration, and ecosystem type.
+- This figure was chosen to illustrate the *scale* of intervention required under an extreme scenario, not to predict actual El Niño impacts.
+- The model cannot validate whether a 10% global sink loss is a realistic worst-case estimate.
+
+### Unvalidated coupling hypotheses
+
+All of the following effects are **HYPOTHETICAL** and have NOT been validated by field observation or atmospheric/ocean modelling:
+
+- **Equatorial Belt placement effect**: The hypothesis that concentrating OBS/OTU/UMC/HRS/DGS along the equatorial zone (~20°N to 20°S) acts on the primary coupling zone of global atmospheric and ocean circulation is a structural hypothesis only. No empirical evidence currently supports the specific multipliers used in this model.
+- **Atmospheric circulation coupling**: The hypothesis that equatorial deployment enhances inter-hemispheric heat redistribution, cloud formation, and evapotranspiration at the planetary scale is not validated.
+- **Ocean current coupling**: The hypothesis that deployment along major ocean current pathways (Gulf Stream, Kuroshio, etc.) enhances phytoplankton productivity and thermohaline circulation is speculative.
+- **Cross-hemisphere transfer**: The Full Planetary Network coupling benefit is doubly speculative.
+
+### Real-world requirements not modelled
+
+Actual deployment of OBS, OTU, UMC, HRS, or DGS at planetary scale would require (none of these are modelled):
+
+- **Ocean ecosystem risk assessment**: OBS seeding and OTU upwelling may disrupt existing marine food webs, oxygen levels, and nutrient cycles in ways not captured by any current model.
+- **Energy and material budget**: Operating planetary-scale technology networks requires massive energy inputs. The energy-carbon footprint of deployment is not modelled.
+- **Water resource assessment**: DGS and HRS deployment at scale may require large freshwater inputs that conflict with existing water demands.
+- **International legal and governance framework**: Equatorial Belt and Ocean Current deployment would cross international waters and require multilateral agreements not currently in place.
+- **Long-term operational maintenance**: The model assumes sustained operation; degradation, replacement, and failure rates are not modelled.
+- **Biodiversity and ecological impact assessment**: Large-scale deployment of any technology may create local ecological impacts not captured in global indices.
+- **Regional heterogeneity**: The model uses a global uniform coverage fraction. Real deployment would be geographically uneven with local saturation, transport, and site constraints.
+
+### What this model can and cannot claim
+
+| Claim | Valid? |
+|---|---|
+| A 10% Super El Nino sink loss represents a worst-case validated scenario | ❌ No — HYPOTHETICAL assumption only |
+| Equatorial Belt placement is more effective than random placement per unit area | ❌ Not validated — HYPOTHETICAL structural hypothesis |
+| The minimum required scales (~21% for Full Planetary, ~26% for Equatorial) represent real-world thresholds | ❌ No — entirely dependent on unvalidated HYPOTHETICAL parameters |
+| Scale and placement matter conceptually for planetary-level intervention | ✅ Yes — as a structural argument for research prioritization |
+| Feasibility decreases with required scale | ✅ Yes — qualitatively valid as a structural observation |
+| The model supports further research into equatorial-belt and ocean-current-coupled deployment strategies | ✅ Tentatively — as a rationale for pilot studies and atmospheric modelling |
+| This model is a scientific proof of the multi-cause hypothesis | ❌ No — it is a conceptual PoC only |
+
+### Summary disclaimer
+
+This model is presented to **visualize the required scale of natural-complementary technology deployment** under the multi-cause hypothesis framework, not to predict outcomes. Policy conclusions should NOT be drawn from this model without field validation, atmospheric modelling, ecological impact assessment, and international feasibility studies.
+
+---
+
 ## Author
 
 Master
