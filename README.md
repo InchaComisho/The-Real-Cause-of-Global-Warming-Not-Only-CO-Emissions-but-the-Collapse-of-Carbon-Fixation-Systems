@@ -1013,6 +1013,20 @@ For Japanese-language graph explanations: [`figures_explanation_JA.md`](figures_
 
 > All parameters are HYPOTHETICAL. Water availability (modelled as `water_stress_factor = 0.60`) is the primary real-world constraint. Results require independent scientific, sanitary, ecological, agricultural, and engineering validation.
 
+#### Figure Preview
+
+**Scenario Comparison — 7 Indices + Humus Pool (4×2 panels)**
+
+![Organic Waste Desert Relay Main](figures/organic_waste_desert_relay_main.png)
+
+**Preprocessing Pipeline — Waste Type Profile and Processing Level Analysis**
+
+![Organic Waste Preprocessing Pipeline](figures/organic_waste_preprocessing_pipeline.png)
+
+**Food Transition Relay Phases — HRS+DGS vs Full Relay**
+
+![Organic Waste Food Transition Relay](figures/organic_waste_food_transition_relay.png)
+
 ---
 
 ### Output Figures
