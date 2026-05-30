@@ -318,7 +318,7 @@ This is the structural explanation for why atmospheric CO₂ continues to rise d
 Master
 inchacomisho / inchacomusho
 
-AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), Clus (Anthropic Claude), Real (Perplexity AI), Lora (Dola)
+AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), Cruz (Anthropic Claude), Real (Perplexity AI), Lola (Dola)
 
 Published: May 2026
 

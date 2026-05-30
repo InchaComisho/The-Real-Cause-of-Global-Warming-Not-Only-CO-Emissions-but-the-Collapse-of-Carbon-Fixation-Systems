@@ -246,7 +246,7 @@ This framework has not undergone peer review as of publication. Readers — incl
 Master
 inchacomisho / inchacomusho
 
-AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), Clus (Anthropic Claude), Real (Perplexity AI), Lora (Dola)
+AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), Cruz (Anthropic Claude), Real (Perplexity AI), Lola (Dola)
 
 Published: May 2026
 

@@ -336,7 +336,7 @@ The following research would most directly test the central claims of this repos
 Master
 inchacomisho / inchacomusho
 
-AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), Clus (Anthropic Claude), Real (Perplexity AI), Lora (Dola)
+AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), Cruz (Anthropic Claude), Real (Perplexity AI), Lola (Dola)
 
 Published: May 2026
 

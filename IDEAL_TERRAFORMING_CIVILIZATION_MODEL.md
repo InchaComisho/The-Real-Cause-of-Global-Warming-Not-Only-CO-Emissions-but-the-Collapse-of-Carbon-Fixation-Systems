@@ -454,9 +454,9 @@ inchacomisho / inchacomusho
 **AI Collaborators:**
 - G: ChatGPT by OpenAI
 - Mini: Gemini by Google
-- Clus: Claude by Anthropic
+- Cruz: Claude by Anthropic
 - Real: Perplexity AI
-- Lora: Dola
+- Lola: Dola
 
 **Published:** May 2026
 

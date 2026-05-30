@@ -27,7 +27,7 @@ Parameters swept (one at a time, all others held at default):
     See MODEL_LIMITATIONS.md for full disclosure.
 
 Author: Master (inchacomisho / inchacomusho)
-AI Collaborators: G, Copi, Mini, Clus, Real, Lora
+AI Collaborators: G, Copi, Mini, Cruz, Real, Lola
 Published: May 2026
 License: CC BY-SA 4.0
 """
