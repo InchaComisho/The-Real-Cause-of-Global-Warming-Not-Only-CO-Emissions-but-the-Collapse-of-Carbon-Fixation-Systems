@@ -516,6 +516,29 @@ From reducing CO₂
 to restoring the Earth’s ability to process CO₂.
 ```
 
+## Extended Framework: Carbon Sink Collapse and Regeneration
+
+This repository does not deny the greenhouse effect of CO₂ or the importance of emissions reduction. Instead, it expands the climate discussion by focusing on the weakening of Earth's carbon fixation systems.
+
+Atmospheric CO₂ accumulation should be understood not only as a result of emissions, but also as a symptom of reduced absorption capacity across forests, soils, oceans, plankton systems, and microbial ecosystems.
+
+> This repository presents a conceptual causal framework. It does not deny the greenhouse effect of CO₂, nor does it claim that emissions reduction is unnecessary. The central argument is that emissions reduction must be combined with the regeneration of Earth's carbon fixation systems. All models and diagrams should be treated as conceptual and require scientific validation.
+
+**Extended framework documents:**
+
+- [CARBON_SINK_COLLAPSE_FRAMEWORK.md](CARBON_SINK_COLLAPSE_FRAMEWORK.md) — Conceptual causal framework for carbon sink collapse and atmospheric CO₂ accumulation
+- [MULTI_LAYER_CAUSAL_MODEL.md](MULTI_LAYER_CAUSAL_MODEL.md) — Eight-layer causal model from industrial emissions to climate feedback loops
+- [CARBON_SINK_REGENERATION_STRATEGY.md](CARBON_SINK_REGENERATION_STRATEGY.md) — Conceptual directions for restoring carbon fixation systems
+
+**Related repositories:**
+
+- [Why Decarbonization Alone Cannot Stop Global Warming](https://github.com/InchaComisho/Why-Decarbonization-Alone-Cannot-Stop-Global-Warming)
+- [Direct Planetary Cooling — Integrated Repository Index](https://github.com/InchaComisho/Direct-Planetary-Cooling-Integrated-Repository-Index)
+- [Desert Regeneration and Food Production Through Organic Matter Circulation](https://github.com/InchaComisho/Desert-Regeneration-and-Food-Production-Through-Organic-Matter-Circulation)
+- [Natural Complementary Science — Repository Index](https://github.com/InchaComisho/Natural-Complementary-Science-and-the-New-Civilizational-Genesis-Plan-Repository-Index)
+
+---
+
 ## Suggested SEO Title
 
 The Real Cause of Global Warming: Carbon Sink Collapse, Microbial Decline, and the Failure of Carbon Fixation Systems
