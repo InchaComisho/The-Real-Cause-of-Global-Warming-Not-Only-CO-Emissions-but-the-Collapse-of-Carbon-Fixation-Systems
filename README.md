@@ -530,6 +530,16 @@ Atmospheric CO₂ accumulation should be understood not only as a result of emis
 - [MULTI_LAYER_CAUSAL_MODEL.md](MULTI_LAYER_CAUSAL_MODEL.md) — Eight-layer causal model from industrial emissions to climate feedback loops
 - [CARBON_SINK_REGENERATION_STRATEGY.md](CARBON_SINK_REGENERATION_STRATEGY.md) — Conceptual directions for restoring carbon fixation systems
 
+## Figure Preview: Carbon Sink Collapse and Regeneration
+
+The following diagrams are conceptual visualizations of the carbon sink collapse and regeneration framework. They are not measured datasets or validated climate models.
+
+![Carbon Sink Collapse Diagram](figures/carbon_sink_collapse_diagram.png)
+
+![Multi-Layer Causal Model Diagram](figures/multi_layer_causal_model_diagram.png)
+
+![Carbon Sink Regeneration Strategy Map](figures/carbon_sink_regeneration_strategy_map.png)
+
 **Related repositories:**
 
 - [Why Decarbonization Alone Cannot Stop Global Warming](https://github.com/InchaComisho/Why-Decarbonization-Alone-Cannot-Stop-Global-Warming)
