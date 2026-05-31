@@ -546,6 +546,8 @@ The following diagrams are conceptual visualizations of the carbon sink collapse
 - [Direct Planetary Cooling — Integrated Repository Index](https://github.com/InchaComisho/Direct-Planetary-Cooling-Integrated-Repository-Index)
 - [Desert Regeneration and Food Production Through Organic Matter Circulation](https://github.com/InchaComisho/Desert-Regeneration-and-Food-Production-Through-Organic-Matter-Circulation)
 - [Natural Complementary Science — Repository Index](https://github.com/InchaComisho/Natural-Complementary-Science-and-the-New-Civilizational-Genesis-Plan-Repository-Index)
+- **[CO₂ Is Not the Only Villain — A Climate SF Narrative](https://github.com/InchaComisho/CO2-Is-Not-The-Only-Villain-A-Climate-SF-Narrative)** *(speculative fiction companion — not a scientific claim)*  
+  A 10-episode narrative dramatising the carbon fixation collapse thesis, ocean heat persistence, and biological system degradation as a proposed additional layer of understanding beyond CO₂ alone.
 
 ---
 
