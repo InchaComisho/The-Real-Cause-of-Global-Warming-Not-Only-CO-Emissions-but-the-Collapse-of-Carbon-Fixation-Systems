@@ -548,6 +548,9 @@ The following diagrams are conceptual visualizations of the carbon sink collapse
 - [Natural Complementary Science — Repository Index](https://github.com/InchaComisho/Natural-Complementary-Science-and-the-New-Civilizational-Genesis-Plan-Repository-Index)
 - **[CO₂ Is Not the Only Villain — A Climate SF Narrative](https://github.com/InchaComisho/CO2-Is-Not-The-Only-Villain-A-Climate-SF-Narrative)** *(speculative fiction companion — not a scientific claim)*  
   A 10-episode narrative dramatising the carbon fixation collapse thesis, ocean heat persistence, and biological system degradation as a proposed additional layer of understanding beyond CO₂ alone.
+- [Natural-Complementary-Science](https://github.com/InchaComisho/Natural-Complementary-Science) — Core definition of Natural Complementary Science as a framework for restoring natural circulation.
+- [Natural-Complementary-Science-Perspective-on-Global-Warming-](https://github.com/InchaComisho/Natural-Complementary-Science-Perspective-on-Global-Warming-) — Climate feedback model from the perspective of Natural Complementary Science.
+- [Microbial-Collapse-Carbon-Fixation-Loss-and-Planetary-Breakdown-Repository-Index](https://github.com/InchaComisho/Microbial-Collapse-Carbon-Fixation-Loss-and-Planetary-Breakdown-Repository-Index) — Repository index for microbial collapse and carbon fixation loss.
 
 ---
 
