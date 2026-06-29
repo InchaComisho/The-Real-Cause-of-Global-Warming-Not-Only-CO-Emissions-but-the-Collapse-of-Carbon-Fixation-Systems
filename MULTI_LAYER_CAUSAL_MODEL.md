@@ -278,5 +278,15 @@ It means emissions reduction alone may be insufficient if Layers 2–5 continue 
 ---
 
 Author: Master (inchacomisho / inchacomusho)  
-License: CC BY-SA 4.0  
+License: CC BY 4.0  
 This document is part of the conceptual framework developed in [The Real Cause of Global Warming](README.md).
+
+---
+
+## Author
+
+Master / inchacomusho / InchaComisho
+
+An independent Japanese concept designer, observer, proposer, AI tuner, and definer of Artificial Wisdom.  
+Founder and advocate of the academic framework of Natural Complementary Science.  
+Publicly active in natural-law philosophy, planetary circulation restoration, and co-creation with AI.

@@ -460,8 +460,8 @@ inchacomisho / inchacomusho
 
 **Published:** May 2026
 
-**License:** CC BY-SA 4.0
-https://creativecommons.org/licenses/by-sa/4.0/
+**License:** CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
 
 *This document may be freely shared, adapted, and built upon, provided attribution is given and derivative works are shared under the same license.*
 

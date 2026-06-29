@@ -603,5 +603,5 @@ AI Collaborators: G (ChatGPT), Copi (Microsoft Copilot), Mini (Google Gemini), C
 
 Published: May 2026
 
-License: CC BY-SA 4.0
-https://creativecommons.org/licenses/by-sa/4.0/
+License: CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
