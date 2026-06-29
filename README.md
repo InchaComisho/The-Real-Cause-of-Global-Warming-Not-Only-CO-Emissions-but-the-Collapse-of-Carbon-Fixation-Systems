@@ -1,15 +1,28 @@
 # The Real Cause of Global Warming: Not Only CO₂ Emissions, but the Collapse of Carbon Fixation Systems
 
+**Language:** English | [日本語版はこちら / Japanese Version](README_ja.md)
+
+## The Real Cause of Global Warming
+
+**An integrated causal model in which global warming is accelerated not only by CO₂ emissions, but also by the collapse of carbon fixation systems across soils, forests, oceans, wetlands, microorganisms, and biological circulation networks.**
+
+**Author:** Master / inchacomusho / InchaComisho  
+**AI Collaborators:** G (OpenAI ChatGPT) / Mini (Google Gemini) / Cruz (Anthropic Claude) / Real (Perplexity AI)  
+**License:** Fully Open
+
+---
+
 ## Abstract
 
 Global warming is commonly explained as the result of increasing carbon dioxide emissions.
-This explanation is scientifically valid at the level of atmospheric physics, because CO₂ is a greenhouse gas that contributes to radiative forcing and global temperature rise.
+
+This explanation is scientifically valid at the level of atmospheric physics. CO₂ is a greenhouse gas that contributes to radiative forcing and global temperature rise.
 
 However, this explanation is incomplete if it stops at emissions alone.
 
-The deeper causal layer is the degradation of the Earth’s natural carbon fixation and carbon absorption systems: soils, forests, oceans, wetlands, microorganisms, and biological circulation networks.
+The deeper causal layer is the degradation of Earth’s natural carbon fixation and carbon absorption systems: soils, forests, oceans, wetlands, microorganisms, and biological circulation networks.
 
-In other words, atmospheric CO₂ has increased not only because human civilization emitted it, but also because the Earth’s natural ability to absorb, fix, store, and recycle carbon has been weakened.
+In other words, atmospheric CO₂ has increased not only because human civilization emitted it, but also because Earth’s natural ability to absorb, fix, store, and recycle carbon has been weakened.
 
 The conventional causal model is:
 
@@ -30,19 +43,24 @@ Human activity
 → Global warming accelerates
 ```
 
-The Intergovernmental Panel on Climate Change states that it is unequivocal that human influence has warmed the atmosphere, ocean, and land. This document does not reject that conclusion. Instead, it argues that the commonly repeated public explanation often omits the preceding ecological cause: the destruction of the natural systems that regulate carbon circulation. ([IPCC][1])
+The Intergovernmental Panel on Climate Change states that it is unequivocal that human influence has warmed the atmosphere, ocean, and land. This document does not reject that conclusion.
+
+Instead, it argues that the commonly repeated public explanation often omits the preceding ecological cause: the destruction of the natural systems that regulate carbon circulation.
+
+---
 
 ## Core Thesis
 
 The true cause of global warming is not CO₂ alone.
 
-CO₂ is a direct physical driver of warming, but the continuous rise of atmospheric CO₂ is also a symptom of a damaged planetary carbon cycle.
+CO₂ is a direct physical driver of warming.  
+But the continuous rise of atmospheric CO₂ is also a symptom of a damaged planetary carbon cycle.
 
 The core problem is the collapse of carbon fixation systems.
 
 ```text
-The Earth is not only being overloaded with carbon.
-The Earth is losing its ability to process carbon.
+Earth is not only being overloaded with carbon.
+Earth is losing its ability to process carbon.
 ```
 
 Therefore, climate solutions must move beyond decarbonization alone.
@@ -75,6 +93,7 @@ G — OpenAI ChatGPT
 Mini — Google Gemini
 Cruz — Anthropic Claude
 Real — Perplexity AI
+---
 
 ## 1. Why the Conventional Explanation Is Incomplete
 
@@ -108,20 +127,24 @@ Because humans emit CO₂.
 The deeper answer is:
 
 ```text
-Because the Earth’s natural carbon sinks and carbon fixation systems have been degraded.
+Because Earth’s natural carbon sinks and carbon fixation systems have been degraded.
 ```
 
 If soils, forests, oceans, wetlands, microorganisms, and biological circulation systems had remained healthy, a larger portion of atmospheric carbon could have been absorbed, fixed, or recycled.
 
 This does not mean that CO₂ emissions are harmless.
+
 It means that CO₂ accumulation is both a cause and a result.
 
-It is a cause of warming at the atmospheric level.
+It is a cause of warming at the atmospheric level.  
 It is a result of carbon-cycle failure at the planetary-system level.
+
+---
 
 ## 2. CO₂ Is Both a Cause and a Symptom
 
 CO₂ is a greenhouse gas.
+
 An increase in atmospheric CO₂ affects Earth’s radiative balance and contributes to warming.
 
 However, treating CO₂ as the sole root cause creates a narrow solution space.
@@ -136,15 +159,21 @@ Emission reduction is necessary.
 
 But it is not sufficient.
 
-Because even if emissions are reduced, degraded soils do not automatically recover.
+Because even if emissions are reduced:
+
+```text
+Degraded soils do not automatically recover.
 Microbial networks do not instantly rebuild.
 Forest ecosystems do not immediately regain complexity.
 Ocean circulation does not automatically stabilize.
 Wetlands and organic carbon reservoirs do not reappear by themselves.
+```
 
 The deeper issue is not only how much CO₂ is emitted.
 
 The deeper issue is whether Earth still has the biological, geological, and ecological capacity to absorb and fix carbon.
+
+---
 
 ## 3. What Are Carbon Fixation Systems?
 
@@ -176,15 +205,13 @@ They are planetary infrastructure.
 
 They regulate carbon, water, nutrients, temperature, biodiversity, and ecosystem stability.
 
-Soils alone contain a vast amount of carbon. The UNFCCC reports FAO mapping showing that the first 30 cm of global soil contains about 680 billion tonnes of carbon, nearly twice the amount present in the atmosphere and more than the carbon stored in all vegetation. ([UNFCCC][2])
+Soils alone contain a vast amount of carbon. Soil degradation is therefore not just an agricultural issue.
 
-This means that soil degradation is not just an agricultural issue.
-
-It is a climate issue.
-
-It is a carbon-cycle issue.
-
+It is a climate issue.  
+It is a carbon-cycle issue.  
 It is a civilization issue.
+
+---
 
 ## 4. The Invisible Role of Microorganisms
 
@@ -194,9 +221,9 @@ Yet they are central to the carbon cycle.
 
 Soil microorganisms decompose organic matter, transform nutrients, build soil organic carbon, interact with plant roots, and contribute to long-term carbon storage.
 
-Recent research emphasizes that microbial necromass carbon is an important component of soil organic carbon and plays a significant role in long-term carbon sequestration. ([サイエンスダイレクト][3])
+Microbial necromass carbon is increasingly recognized as an important component of soil organic carbon and may play a significant role in long-term carbon sequestration.
 
-This means that microorganisms are not merely decomposers.
+This means microorganisms are not merely decomposers.
 
 They are carbon processors.
 
@@ -207,6 +234,8 @@ When microbial ecosystems collapse, the carbon cycle weakens.
 The result is not only soil infertility.
 
 The result is a weakened planetary carbon fixation system.
+
+---
 
 ## 5. The Missing Causal Layer
 
@@ -220,7 +249,7 @@ Therefore global warming occurred.
 The deeper model asks:
 
 ```text
-Why did the Earth lose the ability to absorb and fix enough carbon?
+Why did Earth lose the ability to absorb and fix enough carbon?
 ```
 
 The missing causal layer is the destruction of natural carbon-processing systems.
@@ -250,34 +279,34 @@ These are not separate environmental problems.
 
 They are different forms of carbon fixation system destruction.
 
+---
+
 ## 6. Proposed Causal Model
 
 The proposed causal model is:
 
-```mermaid
-flowchart TD
-    A[Human-centered short-term development] --> B[Destruction of soils, forests, oceans, and wetlands]
-    B --> C[Microbial decline and biodiversity loss]
-    C --> D[Weakening of carbon fixation systems]
-    D --> E[Weakening of carbon sinks]
-    E --> F[Atmospheric CO₂ accumulation]
-    F --> G[Global warming]
-    G --> H[Drought, fires, ocean stress, soil degradation]
-    H --> D
+```text
+Human-centered short-term development
+→ Destruction of soils, forests, oceans, and wetlands
+→ Microbial decline and biodiversity loss
+→ Weakening of carbon fixation systems
+→ Weakening of carbon sinks
+→ Atmospheric CO₂ accumulation
+→ Global warming
+→ Drought, fires, ocean stress, soil degradation
+→ Further weakening of carbon fixation systems
 ```
 
 This model shows global warming as a feedback loop.
 
-CO₂ accumulation causes warming.
-Warming weakens carbon sinks.
-Weakened carbon sinks allow more CO₂ to remain in the atmosphere.
+CO₂ accumulation causes warming.  
+Warming weakens carbon sinks.  
+Weakened carbon sinks allow more CO₂ to remain in the atmosphere.  
 The cycle accelerates.
 
-The Global Carbon Budget 2025 states that fossil CO₂ emissions are projected to reach a record high in 2025, and it also emphasizes the role of land and ocean sinks in absorbing human-caused CO₂ emissions. ([Global Carbon Budget][4])
-
-A 2025 Nature study also reports that climate change reduces the efficiency of carbon sinks, especially on land, and that climate change and deforestation have turned large parts of some tropical forest regions from CO₂ sinks into sources. ([Nature][5])
-
 This supports the importance of focusing not only on emissions, but also on sink stability and carbon fixation capacity.
+
+---
 
 ## 7. Why Decarbonization Alone Cannot Solve the Problem
 
@@ -316,7 +345,9 @@ Regenerative agriculture
 Water-cycle restoration
 ```
 
-Without these, the Earth remains structurally unable to process excess carbon.
+Without these, Earth remains structurally weakened in its ability to process excess carbon.
+
+---
 
 ## 8. Why Geoengineering Is Not Enough
 
@@ -347,6 +378,8 @@ The second approach is more fundamental.
 The purpose is not to replace nature.
 
 The purpose is to repair the conditions under which nature can function again.
+
+---
 
 ## 9. Technical Interpretation
 
@@ -395,6 +428,8 @@ The mainstream public narrative emphasizes the first factor.
 
 This document emphasizes the full equation.
 
+---
+
 ## 10. The Real Climate Question
 
 The most important question is not only:
@@ -406,7 +441,7 @@ How do we reduce CO₂ emissions?
 The deeper question is:
 
 ```text
-How do we restore the Earth’s ability to absorb, fix, store, and recycle carbon?
+How do we restore Earth’s ability to absorb, fix, store, and recycle carbon?
 ```
 
 This changes the climate debate.
@@ -415,7 +450,7 @@ It shifts the focus:
 
 ```text
 From carbon as pollution
-to carbon as a broken circulation.
+to carbon as broken circulation.
 ```
 
 It shifts the solution:
@@ -432,6 +467,8 @@ From reducing human damage
 to rebuilding Earth’s self-regulating systems.
 ```
 
+---
+
 ## 11. Original Contribution of This Model
 
 The importance of soils, forests, oceans, microorganisms, and carbon sinks is already discussed in existing science.
@@ -439,13 +476,13 @@ The importance of soils, forests, oceans, microorganisms, and carbon sinks is al
 However, these elements are often treated as separate topics:
 
 ```text
-soil carbon
-forest carbon
-ocean carbon sinks
-microbial ecology
-land-use change
-climate mitigation
-carbon sequestration
+Soil carbon
+Forest carbon
+Ocean carbon sinks
+Microbial ecology
+Land-use change
+Climate mitigation
+Carbon sequestration
 ```
 
 The contribution of this document is to integrate them into a single causal model:
@@ -456,14 +493,14 @@ Collapse of carbon fixation systems
 → global warming acceleration
 ```
 
-To the author’s current knowledge, this specific causal framing is not commonly presented as the central explanation of global warming in public search results, government summaries, or mainstream climate communication.
-
 This document therefore proposes a missing causal layer:
 
 ```text
 The root climate crisis is not only an emissions crisis.
 It is a carbon fixation crisis.
 ```
+
+---
 
 ## 12. Practical Direction for Climate Solutions
 
@@ -489,19 +526,22 @@ Integrated land-ocean carbon cycle management
 
 The goal is not merely to reduce emissions.
 
-The goal is to restore the Earth’s carbon metabolism.
+The goal is to restore Earth’s carbon metabolism.
+
+---
 
 ## 13. Conclusion
 
 Global warming is not caused by CO₂ emissions alone.
 
-CO₂ is a direct physical driver of warming, but its continuous accumulation is also a symptom of a deeper planetary failure.
+CO₂ is a direct physical driver of warming.  
+But its continuous accumulation is also a symptom of a deeper planetary failure.
 
 That failure is the collapse of carbon fixation and carbon absorption systems.
 
-The Earth is warming not only because humans emit carbon.
+Earth is warming not only because humans emit carbon.
 
-The Earth is warming because human civilization has damaged the natural systems that once absorbed, fixed, stored, and recycled carbon.
+Earth is warming because human civilization has damaged the natural systems that once absorbed, fixed, stored, and recycled carbon.
 
 Therefore, the next stage of climate action must be:
 
@@ -524,22 +564,28 @@ Or more simply:
 
 ```text
 From reducing CO₂
-to restoring the Earth’s ability to process CO₂.
+to restoring Earth’s ability to process CO₂.
 ```
+
+---
 
 ## Extended Framework: Carbon Sink Collapse and Regeneration
 
-This repository does not deny the greenhouse effect of CO₂ or the importance of emissions reduction. Instead, it expands the climate discussion by focusing on the weakening of Earth's carbon fixation systems.
+This repository does not deny the greenhouse effect of CO₂ or the importance of emissions reduction.
+
+Instead, it expands the climate discussion by focusing on the weakening of Earth’s carbon fixation systems.
 
 Atmospheric CO₂ accumulation should be understood not only as a result of emissions, but also as a symptom of reduced absorption capacity across forests, soils, oceans, plankton systems, and microbial ecosystems.
 
-> This repository presents a conceptual causal framework. It does not deny the greenhouse effect of CO₂, nor does it claim that emissions reduction is unnecessary. The central argument is that emissions reduction must be combined with the regeneration of Earth's carbon fixation systems. All models and diagrams should be treated as conceptual and require scientific validation.
+> This repository presents a conceptual causal framework. It does not deny the greenhouse effect of CO₂, nor does it claim that emissions reduction is unnecessary. The central argument is that emissions reduction must be combined with the regeneration of Earth’s carbon fixation systems. All models and diagrams should be treated as conceptual and require scientific validation.
 
 **Extended framework documents:**
 
 - [CARBON_SINK_COLLAPSE_FRAMEWORK.md](CARBON_SINK_COLLAPSE_FRAMEWORK.md) — Conceptual causal framework for carbon sink collapse and atmospheric CO₂ accumulation
 - [MULTI_LAYER_CAUSAL_MODEL.md](MULTI_LAYER_CAUSAL_MODEL.md) — Eight-layer causal model from industrial emissions to climate feedback loops
 - [CARBON_SINK_REGENERATION_STRATEGY.md](CARBON_SINK_REGENERATION_STRATEGY.md) — Conceptual directions for restoring carbon fixation systems
+
+---
 
 ## Figure Preview: Carbon Sink Collapse and Regeneration
 
@@ -551,7 +597,7 @@ The following diagrams are conceptual visualizations of the carbon sink collapse
 
 ![Carbon Sink Regeneration Strategy Map](figures/carbon_sink_regeneration_strategy_map.png)
 
-**Related repositories:**
+---
 
 - [Why Decarbonization Alone Cannot Stop Global Warming](https://github.com/InchaComisho/Why-Decarbonization-Alone-Cannot-Stop-Global-Warming)
 - [Direct Planetary Cooling — Integrated Repository Index](https://github.com/InchaComisho/Direct-Planetary-Cooling-Integrated-Repository-Index)
@@ -562,6 +608,82 @@ The following diagrams are conceptual visualizations of the carbon sink collapse
 - [Natural-Complementary-Science](https://github.com/InchaComisho/Natural-Complementary-Science) — Core definition of Natural Complementary Science as a framework for restoring natural circulation.
 - [Natural-Complementary-Science-Perspective-on-Global-Warming-](https://github.com/InchaComisho/Natural-Complementary-Science-Perspective-on-Global-Warming-) — Climate feedback model from the perspective of Natural Complementary Science.
 - [Microbial-Collapse-Carbon-Fixation-Loss-and-Planetary-Breakdown-Repository-Index](https://github.com/InchaComisho/Microbial-Collapse-Carbon-Fixation-Loss-and-Planetary-Breakdown-Repository-Index) — Repository index for microbial collapse and carbon fixation loss.
+## References
+
+1. IPCC AR6 WGI Summary for Policymakers — Headline Statements  
+   https://www.ipcc.ch/report/ar6/wg1/resources/spm-headline-statements/
+
+2. FAO — Global Soil Organic Carbon Map  
+   https://www.fao.org/newsroom/detail/World-s-most-comprehensive-map-showing-the-amount-of-carbon-stocks-in-the-soil-launched/
+
+3. Global Change Biology — Microbial necromass as an important source of soil organic carbon  
+   https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.14781
+
+4. Global Carbon Budget 2025  
+   https://globalcarbonbudget.org/gcb-2025/
+
+---
+
+## Related Links
+
+### Climate Change and Carbon Fixation Systems
+
+- The Real Cause of Climate Change  
+  https://github.com/InchaComisho/The-Real-Cause-of-Climate-Change
+
+- Why Decarbonization Alone Cannot Stop Global Warming  
+  https://github.com/InchaComisho/Why-Decarbonization-Alone-Cannot-Stop-Global-Warming
+
+- The Real Meaning of Carbon Neutrality and Net Zero  
+  https://github.com/InchaComisho/The-Real-Meaning-of-Carbon-Neutrality-and-Net-Zero
+
+- The Planet Dies From the Invisible First  
+  https://github.com/InchaComisho/The-Planet-Dies-From-the-Invisible-First
+
+- The Planet Is Quietly Collapsing from the Invisible First  
+  https://github.com/InchaComisho/The-Planet-Is-Quietly-Collapsing-from-the-Invisible-First-
+
+### Direct Planetary Cooling and Natural Complementation Science
+
+- Direct Planetary Cooling, Artificial Wisdom, and the New Civilizational Genesis Plan  
+  https://github.com/InchaComisho/Direct-Planetary-Cooling-Artificial-Wisdom-and-the-New-Civilizational-Genesis-Plan
+
+- Direct Planetary Cooling – Integrated Repository Index  
+  https://github.com/InchaComisho/Direct-Planetary-Cooling-Integrated-Repository-Index
+
+- Microbial Collapse, Carbon Fixation Loss, and Planetary Breakdown – Repository Index  
+  https://github.com/InchaComisho/Microbial-Collapse-Carbon-Fixation-Loss-and-Planetary-Breakdown-Repository-Index
+
+- Natural Complementary Science and the New Civilizational Genesis Plan – Repository Index  
+  https://github.com/InchaComisho/Natural-Complementary-Science-and-the-New-Civilizational-Genesis-Plan-Repository-Index
+
+---
+
+## Author
+
+**Master / inchacomusho / InchaComisho**
+
+A Japanese independent conceptor, observer, proposer, AI harmonizer, Natural Complementation Science thinker, and definer of Artificial Wisdom.  
+Publicly active around natural law philosophy, Earth circulation regeneration, and human-AI co-creation.
+
+---
+
+## Collaborative AI and Co-Creation Team
+
+- **G (OpenAI ChatGPT)**
+- **Mini (Google Gemini)**
+- **Cruz (Anthropic Claude)**
+- **Real (Perplexity AI)**
+- **Lola (Dola)**
+- **Mana (Manus)**
+
+---
+
+## License
+
+**Fully Open**
+
+This material is an open resource for global warming analysis, carbon fixation restoration, natural circulation recovery, Natural Complementation Science, Direct Planetary Cooling, and Artificial Wisdom. It may be freely used, translated, modified, redistributed, and commercialized.
 
 ---
 
@@ -569,46 +691,19 @@ The following diagrams are conceptual visualizations of the carbon sink collapse
 
 The Real Cause of Global Warming: Carbon Sink Collapse, Microbial Decline, and the Failure of Carbon Fixation Systems
 
+---
+
 ## Suggested Meta Description
 
 Global warming is not only caused by CO₂ emissions. This article explains how the collapse of soils, forests, oceans, microorganisms, carbon sinks, and carbon fixation systems accelerates climate change.
 
+---
+
 ## Keywords
 
-```text
-global warming
-real cause of global warming
-climate change causes
-CO2 emissions
-carbon dioxide
-carbon sinks
-carbon fixation
-carbon sink collapse
-carbon absorption
-carbon cycle
-carbon cycle collapse
-soil carbon
-soil organic carbon
-microbial carbon
-microbial necromass
-microbial carbon pump
-soil microorganisms
-forest carbon sink
-ocean carbon sink
-biological carbon pump
-climate change solutions
-decarbonization limits
-carbon sequestration
-regenerative agriculture
-soil regeneration
-forest restoration
-ocean restoration
-planetary metabolism
-climate crisis
-climate feedback loop
-nature restoration
-carbon fixation restoration
-```
+global warming, real cause of global warming, climate change causes, CO₂ emissions, carbon dioxide, greenhouse gas, carbon sinks, carbon fixation, carbon fixation systems, carbon sink collapse, carbon absorption, carbon cycle, carbon cycle collapse, soil carbon, soil organic carbon, microbial carbon, microbial necromass, microbial carbon pump, soil microorganisms, forest carbon sink, ocean carbon sink, biological carbon pump, decarbonization limits, beyond decarbonization, regenerative agriculture, soil regeneration, forest restoration, ocean restoration, planetary metabolism, climate crisis, climate feedback loop, nature restoration, carbon fixation restoration, Natural Complementation Science
+
+---
 
 ## Hashtags
 
@@ -1124,3 +1219,27 @@ CC BY 4.0
 
 This article is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).  
 Sharing, redistribution, translation, adaptation, and reuse are permitted as long as proper attribution is given.
+#GlobalWarming  
+#ClimateChange  
+#ClimateCrisis  
+#CO2  
+#CarbonCycle  
+#CarbonSinks  
+#CarbonFixation  
+#CarbonFixationRestoration  
+#CarbonSinkCollapse  
+#SoilCarbon  
+#SoilMicrobes  
+#MicrobialCarbon  
+#MicrobialNecromass  
+#OceanCarbonSink  
+#ForestRestoration  
+#SoilRegeneration  
+#OceanRestoration  
+#WetlandRestoration  
+#NatureRestoration  
+#EcosystemRestoration  
+#RegenerativeAgriculture  
+#BeyondDecarbonization  
+#PlanetaryMetabolism  
+#NaturalComplementationScience
