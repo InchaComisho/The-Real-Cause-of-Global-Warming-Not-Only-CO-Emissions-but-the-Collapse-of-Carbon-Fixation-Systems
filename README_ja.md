@@ -2,6 +2,8 @@
 
 **言語 / Language:** 日本語 | [English Version](README.md)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M6J122N2K2)
+
 ## The Real Cause of Global Warming
 
 **CO₂排出だけでなく、土壌・森林・海洋・湿地・微生物循環を含む炭素固定源の崩壊が、地球温暖化を加速させているという統合的因果モデル**

@@ -2,6 +2,8 @@
 
 **Language:** English | [日本語版はこちら / Japanese Version](README_ja.md)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M6J122N2K2)
+
 ## The Real Cause of Global Warming
 
 **An integrated causal model in which global warming is accelerated not only by CO₂ emissions, but also by the collapse of carbon fixation systems across soils, forests, oceans, wetlands, microorganisms, and biological circulation networks.**
