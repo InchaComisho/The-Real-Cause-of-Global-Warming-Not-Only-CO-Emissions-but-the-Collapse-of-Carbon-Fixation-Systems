@@ -1,5 +1,7 @@
 # Causal Structure: Carbon Fixation Collapse and Global Warming
 
+[日本語版はこちら / Japanese version](CAUSAL_STRUCTURE_ja.md)
+
 *A node-based map of the causal relationships between CO₂ emissions, carbon fixation system collapse, natural circulation breakdown, and global warming acceleration.*
 
 ---

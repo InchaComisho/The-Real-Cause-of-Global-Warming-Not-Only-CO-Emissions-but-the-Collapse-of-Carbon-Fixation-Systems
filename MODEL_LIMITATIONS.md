@@ -1,5 +1,7 @@
 # Model Limitations and Disclaimers
 
+[日本語版はこちら / Japanese version](MODEL_LIMITATIONS_ja.md)
+
 *A full disclosure of the hypothetical nature, unverified assumptions, and calibration requirements of all Python simulation models in this repository.*
 
 ---

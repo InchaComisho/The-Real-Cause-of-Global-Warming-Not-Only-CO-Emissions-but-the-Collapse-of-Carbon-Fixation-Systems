@@ -1,5 +1,7 @@
 # Ideal Nature-Complementary Terraforming Civilization Model
 
+[日本語版はこちら / Japanese version](IDEAL_TERRAFORMING_CIVILIZATION_MODEL_ja.md)
+
 *A Conceptual Framework for Planetary Metabolic Restoration Through Civilization Compression and Ecological Return*
 
 ---

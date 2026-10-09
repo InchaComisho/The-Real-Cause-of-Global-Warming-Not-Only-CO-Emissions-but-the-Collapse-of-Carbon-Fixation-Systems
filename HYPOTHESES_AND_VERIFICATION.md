@@ -1,5 +1,7 @@
 # Hypotheses and Verification
 
+[日本語版はこちら / Japanese version](HYPOTHESES_AND_VERIFICATION_ja.md)
+
 *A structured inventory of the scientific claims in this repository — organized by hypothesis, testable prediction, required data, evidence status, and research priorities.*
 
 ---

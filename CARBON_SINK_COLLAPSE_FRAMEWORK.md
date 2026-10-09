@@ -1,5 +1,7 @@
 # Carbon Sink Collapse Framework
 
+[日本語版はこちら / Japanese version](CARBON_SINK_COLLAPSE_FRAMEWORK_ja.md)
+
 ## A Conceptual Causal Framework for Atmospheric CO₂ Accumulation
 
 ---

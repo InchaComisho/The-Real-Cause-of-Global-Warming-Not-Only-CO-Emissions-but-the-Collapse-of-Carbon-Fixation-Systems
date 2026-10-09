@@ -1,5 +1,7 @@
 # Multi-Layer Causal Model of Global Warming
 
+[日本語版はこちら / Japanese version](MULTI_LAYER_CAUSAL_MODEL_ja.md)
+
 ## A Conceptual Eight-Layer Framework from Industrial Activity to Climate Feedback
 
 ---

@@ -1,5 +1,7 @@
 # Carbon Sink Regeneration Strategy
 
+[日本語版はこちら / Japanese version](CARBON_SINK_REGENERATION_STRATEGY_ja.md)
+
 ## Conceptual Directions for Restoring Earth's Carbon Fixation Systems
 
 ---

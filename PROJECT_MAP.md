@@ -1,5 +1,7 @@
 # Project Map
 
+[日本語版はこちら / Japanese version](PROJECT_MAP_ja.md)
+
 *A navigation guide to this repository's files, its position within the broader research framework, and recommended reading paths for different audiences.*
 
 ---
